@@ -65,6 +65,9 @@ fi
 # \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-< 
 # |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/ 
 
+# Lunar Vim Because I can
+alias lvim='/home/robin/.local/bin/lvim'
+
 # Dotfile Management
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
@@ -82,6 +85,7 @@ alias remove='sudo apt remove'                       # Shortcut for removing pac
 alias search='apt search'                            # Search for packages
 alias df='df -h'                                     # Display free disk space in human-readable format
 alias du='du -h'                                     # Disk usage in human-readable format
+alias htop='sudo btop'                               # System monitoring utility
 
 # Networking
 alias ports='netstat -tulanp'                        # Show open ports
