@@ -125,5 +125,8 @@ format = 'via [$symbol]($style)'
 format = 'via [$symbol]($style)'
 
 [conda]
-format = "via [🐍 $environment]($style) "
+format = "via [$environment]($style) "
 style = 'bold green'
+
+
+
