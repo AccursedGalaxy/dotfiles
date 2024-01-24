@@ -123,3 +123,7 @@ format = 'via [$symbol]($style)'
 
 [zig]
 format = 'via [$symbol]($style)'
+
+[conda]
+format = "via [🐍 $environment]($style) "
+style = 'bold green'
