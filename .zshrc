@@ -26,6 +26,13 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # Starship Configuration
 eval "$(starship init zsh)"
+eval $(thefuck --alias)
+
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+bindkey '^[[C' autosuggest-accept # Use the right arrow key
 
 # Plugins
 plugins=( 
@@ -75,7 +82,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && nvim ." # Open nvim config in nvim netrw
-alias getcoding="cd ~/github"
+alias coding="cd ~/github && conda activate DevEnv && nvim ." # Open coding directory in nvim netrw
 alias hyper="cd ~/.config/hypr && nvim ." # Open Hyper config in nvim netrw
 
 # General System Administration
