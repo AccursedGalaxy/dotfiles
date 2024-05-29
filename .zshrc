@@ -26,13 +26,16 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # Starship Configuration
 eval "$(starship init zsh)"
-eval $(thefuck --alias)
 
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+bindkey '^[[C' autosuggest-accept # Use the right arrow key
+
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
+autoload -U compinit && compinit
 
-bindkey '^[[C' autosuggest-accept # Use the right arrow key
+source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
 
 # Plugins
 plugins=( 
@@ -128,6 +131,8 @@ alias glog='git log --oneline --decorate --graph'    # Git log graph
 alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
 
+alias cat='batcat'
+
 
 #  __                   __         _   _ 
 # (_   _ ._ o ._ _|_   (_ _|_    _|_ _|_ 
@@ -149,3 +154,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+eval $(thefuck --alias)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
