@@ -22,7 +22,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="dallas"
+ZSH_THEME="flazz"
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -88,9 +88,9 @@ alias d='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 # Navigation
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
-alias nvimconfig="cd ~/.config/nvim && nvim ." # Open nvim config in nvim netrw
-alias coding="cd ~/github && conda activate DevEnv && nvim ." # Open coding directory in nvim netrw
-alias hyper="cd ~/.config/hypr && nvim ." # Open Hyper config in nvim netrw
+alias nvimconfig="cd ~/.config/nvim && nvim ."
+alias coding="cd ~/github && conda activate DevEnv && nvim ."
+alias hyper="cd ~/.config/hypr && nvim ."
 
 # General System Administration
 alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
@@ -115,9 +115,6 @@ alias poweroff='sudo systemctl poweroff'             # Power-off system quickly
 # File Management
 alias ls='exa --icons -F -H --group-directories-first --git -1' # List all files in one column
 alias ll='ls -alF'                                   # List all files in long format
-
-alias la='ls -A'                                     # List all files in long format, including hidden files
-alias l='ls -CF'                                     # List all files in long format, with file type indicators
 alias rm='rm -i'                                     # Interactive removal mode
 alias cp='cp -i'                                     # Interactive copy mode
 alias mv='mv -i'                                     # Interactive move mode
@@ -145,6 +142,16 @@ alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__p
 alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
 alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
+alias psgrep='ps aux | grep'
+
+#Alias to exit conda environments and go back to root directory.
+alias cde='cd $HOME && conda deactivate'
+
+# Conditional Aliases that only work on my personal machine
+if [ "$(hostname)" = "myria" ]; then
+  alias sentinel='cd ~/github/SentinelBot/ && conda activate SentinelEnv && nvim .'
+  alias dcabot='cd ~/github/Fitzo-Crypto-DCA-Bot/ && conda activate DevEnv && nvim .'
+fi
 
 
 #   __         _   _ 
