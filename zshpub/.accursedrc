@@ -92,6 +92,11 @@ alias nvimconfig="cd ~/.config/nvim && nvim ."
 alias coding="cd ~/github && conda activate DevEnv && nvim ."
 alias hyper="cd ~/.config/hypr && nvim ."
 
+if [ "$(hostname)" = "myria" ]; then
+  alias sentinel='cd ~/github/SentinelBot/ && conda activate SentinelEnv && nvim .'
+  alias dcabot='cd ~/github/Fitzo-Crypto-DCA-Bot/ && conda activate DevEnv && nvim .'
+fi
+
 # General System Administration
 alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
 alias install='sudo apt install'                     # Shortcut for installing packages
@@ -147,11 +152,6 @@ alias psgrep='ps aux | grep'
 #Alias to exit conda environments and go back to root directory.
 alias cde='cd $HOME && conda deactivate'
 
-# Conditional Aliases that only work on my personal machine
-if [ "$(hostname)" = "myria" ]; then
-  alias sentinel='cd ~/github/SentinelBot/ && conda activate SentinelEnv && nvim .'
-  alias dcabot='cd ~/github/Fitzo-Crypto-DCA-Bot/ && conda activate DevEnv && nvim .'
-fi
 
 
 #   __         _   _ 
@@ -185,6 +185,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
