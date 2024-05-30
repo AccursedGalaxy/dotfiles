@@ -48,6 +48,14 @@ plugins=(
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+# History Configuration
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
 # Pokemon Colorscripts Display
 # More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 pokemon-colorscripts --no-title -s -r
@@ -151,11 +159,17 @@ alias fzcat='fzf --preview "batcat --color=always --style=header,grid --line-ran
 # (_   _ ._ o ._ _|_   (_ _|_    _|_ _|_ 
 # __) (_ |  | |_) |_   __) |_ |_| |   |  
 #             |                          
-# FZF Configuration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # thefuck setup
 eval $(thefuck --alias)
+
+# FZF Configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Create Dir and CD into
+mkcd () { mkdir -p "$1" && cd "$1"; }
+# Reload Shell
+reload() { source ~/.zshrc; }
 
 
 # >>> conda initialize >>>
