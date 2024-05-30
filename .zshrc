@@ -140,15 +140,12 @@ alias gstd='git stash drop'                          # Git stash drop
 # Miscellaneous
 alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
-
 alias cat='batcat'
-
-# Alias to count all lines in a python project - all .py files apart from other generated files
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
-
-# Alias to FzZ search for files with a cat preview
-
 alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
+alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
+alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
+
 
 #   __         _   _ 
 #  (_ _|_    _|_ _|_ 
