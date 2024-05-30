@@ -27,6 +27,7 @@ ZSH_THEME="dallas"
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 zstyle ':omz:update' frequency 13
+
 ENABLE_CORRECTION="true"
 
 plugins=(
@@ -44,6 +45,7 @@ plugins=(
   zsh-pyenv
   zsh-better-npm-completion
 )
+
 source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
@@ -81,7 +83,7 @@ fi
 alias lvim='/home/robin/.local/bin/lvim'
 
 # Dotfile Management
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+alias d='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Navigation
 alias zshconfig="nvim ~/.zshrc"
@@ -145,13 +147,13 @@ alias cat='batcat'
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
 
 # Alias to FzZ search for files with a cat preview
-alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}"'
 
+alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
 
-#  __                   __         _   _ 
-# (_   _ ._ o ._ _|_   (_ _|_    _|_ _|_ 
-# __) (_ |  | |_) |_   __) |_ |_| |   |  
-#             |                          
+#   __         _   _ 
+#  (_ _|_    _|_ _|_ 
+#  __) |_ |_| |   |  
+#                                       
 
 # thefuck setup
 eval $(thefuck --alias)
