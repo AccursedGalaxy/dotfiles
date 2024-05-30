@@ -133,6 +133,9 @@ alias c='clear'                                      # Clear terminal display
 
 alias cat='batcat'
 
+# Alias to count all lines in a python project - all .py files apart from other generated files
+alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
+
 
 #  __                   __         _   _ 
 # (_   _ ._ o ._ _|_   (_ _|_    _|_ _|_ 
