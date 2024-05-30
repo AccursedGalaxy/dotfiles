@@ -20,59 +20,35 @@
 # .zshrc - Accursed Galaxy's Dotfiles
 # GitHub: https://github.com/AccursedGalaxy
 
-# Path Configuration
-# If coming from bash, you might need to change your $PATH.
-export PATH="$HOME/bin:/usr/local/bin:$PATH"
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="dallas"
 
-# Starship Configuration
-eval "$(starship init zsh)"
+zstyle ':omz:update' mode auto      # update automatically without asking
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' frequency 13
+ENABLE_CORRECTION="true"
 
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-bindkey '^[[C' autosuggest-accept # Use the right arrow key
-
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-source ~/.zsh/zsh-completions/zsh-completions.plugin.zsh
-autoload -U compinit && compinit
-
-source ~/.zsh/zsh-you-should-use/you-should-use.plugin.zsh
-
-# Plugins
-plugins=( 
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
+plugins=(
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
+  zsh-nvm
+  zsh-interactive-cd
+  zsh-you-should-use
+  zsh-history-substring-search
+  zsh-vi-mode
+  zsh-navigation-tools
+  zsh-autopair
+  zsh-pyenv
+  zsh-better-npm-completion
 )
+source $ZSH/oh-my-zsh.sh
 
-# Set  Default Editor
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-
-# History Configuration
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-setopt inc_append_history
-setopt share_history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-
-# Pokemon Colorscripts Display
-# More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
-pokemon-colorscripts --no-title -s -r
-
-# SSH Agent Configuration
-# Start SSH-Agent if not already running and add your default SSH key
-if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
-    eval "$(ssh-agent -s)" > /dev/null 2>&1
-    ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
-else
-    SSH_AUTH_SOCK_CANDIDATES=$(find /tmp/ssh-* -name 'agent.*' -user $USER 2>/dev/null || true)
-    export SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK_CANDIDATES" | head -n 1)
-    if [[ ! "$SSH_AUTH_SOCK" ]]; then
-        eval "$(ssh-agent -s)" > /dev/null 2>&1
-        ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
-    fi
-fi
 
 #  (                                             
 #  )\ )    )               )               )     
@@ -83,7 +59,25 @@ fi
 # \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-< 
 # |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/ 
 
-# Lunar Vim Because I can
+# Pokemon Colorscripts Display
+# More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
+pokemon-colorscripts --no-title -s -r
+
+# SSH Agent Configuration
+# Start SSH-Agent if not already running and add your default SSH key
+if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
+  eval "$(ssh-agent -s)" > /dev/null 2>&1
+  ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
+else
+  SSH_AUTH_SOCK_CANDIDATES=$(find /tmp/ssh-* -name 'agent.*' -user $USER 2>/dev/null || true)
+  export SSH_AUTH_SOCK=$(echo "$SSH_AUTH_SOCK_CANDIDATES" | head -n 1)
+  if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(ssh-agent -s)" > /dev/null 2>&1
+    ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
+  fi
+fi
+
+# Lunar Vim Because sometimes nvim breaks on different machines.. kekw
 alias lvim='/home/robin/.local/bin/lvim'
 
 # Dotfile Management
@@ -141,7 +135,6 @@ alias gst='git stash'                                # Git stash
 alias gsta='git stash apply'                         # Git stash apply
 alias gstd='git stash drop'                          # Git stash drop
 
-
 # Miscellaneous
 alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
@@ -152,7 +145,7 @@ alias cat='batcat'
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
 
 # Alias to FzZ search for files with a cat preview
-alias fzcat='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}"'
+alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}"'
 
 
 #  __                   __         _   _ 
@@ -186,3 +179,6 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
