@@ -126,6 +126,13 @@ alias gc='git commit'                                # Git commit
 alias gp='git push'                                  # Git push
 alias gpull='git pull'                               # Git pull
 alias glog='git log --oneline --decorate --graph'    # Git log graph
+alias gco='git checkout'                             # Git checkout
+alias gb='git branch'                                # Git branch
+alias gcm='git checkout main'                        # Git checkout main
+alias gst='git stash'                                # Git stash
+alias gsta='git stash apply'                         # Git stash apply
+alias gstd='git stash drop'                          # Git stash drop
+
 
 # Miscellaneous
 alias grep='grep --color=auto'                       # Colorized grep output
@@ -144,6 +151,11 @@ alias fzcat='fzf --preview "batcat --color=always --style=header,grid --line-ran
 # (_   _ ._ o ._ _|_   (_ _|_    _|_ _|_ 
 # __) (_ |  | |_) |_   __) |_ |_| |   |  
 #             |                          
+# FZF Configuration
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# thefuck setup
+eval $(thefuck --alias)
 
 
 # >>> conda initialize >>>
@@ -160,7 +172,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-eval $(thefuck --alias)
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
