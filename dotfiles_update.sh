@@ -25,7 +25,6 @@ fi
 cd "$DOTFILES_DIR" || { print_message "Error: Failed to navigate to $DOTFILES_DIR."; exit 1; }
 
 # Get the latest release tag
-print_message "Fetching the latest release tag..."
 LATEST_RELEASE=$(get_latest_release)
 
 if [ -z "$LATEST_RELEASE" ]; then
@@ -33,11 +32,8 @@ if [ -z "$LATEST_RELEASE" ]; then
     exit 1
 fi
 
-print_message "Latest release tag: $LATEST_RELEASE"
-
 # Checkout the latest release
-print_message "Updating dotfiles repository to the latest release..."
-if git fetch --tags && git checkout "tags/$LATEST_RELEASE" -f; then
+if git fetch --tags > /dev/null 2>&1 && git checkout "tags/$LATEST_RELEASE" -f > /dev/null 2>&1; then
     print_message "Dotfiles repository successfully updated to release $LATEST_RELEASE."
 else
     print_message "Error: Failed to update the dotfiles repository to release $LATEST_RELEASE."
@@ -47,7 +43,7 @@ fi
 # Check if the sourcing line is present and uncommented in .zshrc
 ZSHRC_PATH="$HOME/.zshrc"
 if grep -q "^source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
-    print_message "Sourcing line is present and uncommented in .zshrc."
+    :
 else
     if grep -q "^#source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
         print_message "Warning: Sourcing line is present but commented in .zshrc."
@@ -58,8 +54,5 @@ fi
 
 # Inform the user to restart their terminal
 print_message "Please restart your terminal to apply the updates."
-
-# Optional: Source the updated .zshrc automatically (commented out)
-# source $HOME/.zshrc
 
 exit 0
