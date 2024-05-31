@@ -38,7 +38,6 @@ ENABLE_CORRECTION="true"
 plugins=(
   git
   zsh-autosuggestions
-  zsh-syntax-highlighting
   zsh-completions
   zsh-nvm
   zsh-interactive-cd
@@ -49,6 +48,7 @@ plugins=(
   zsh-autopair
   zsh-pyenv
   zsh-better-npm-completion
+  zsh-syntax-highlighting
 )
 
 source $ZSH/oh-my-zsh.sh
