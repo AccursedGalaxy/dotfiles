@@ -24,12 +24,6 @@ fi
 # Navigate to the dotfiles directory
 cd "$DOTFILES_DIR" || { print_message "Error: Failed to navigate to $DOTFILES_DIR."; exit 1; }
 
-# Create a backup of existing configuration
-BACKUP_DIR="$HOME/dotfiles_backup_$(date +'%Y%m%d%H%M%S')"
-mkdir -p "$BACKUP_DIR"
-cp -r $HOME/.zshrc "$BACKUP_DIR/"
-print_message "Backup of .zshrc created at $BACKUP_DIR/.zshrc."
-
 # Get the latest release tag
 print_message "Fetching the latest release tag..."
 LATEST_RELEASE=$(get_latest_release)
@@ -52,6 +46,7 @@ fi
 
 # Inform the user to restart their terminal
 print_message "Please restart your terminal to apply the updates."
+print_message "Make sure the sourcing line in your .zshrc is present and uncommented."
 
 # Optional: Source the updated .zshrc automatically (commented out)
 # source $HOME/.zshrc
