@@ -37,7 +37,7 @@ It is designed to transform your command-line experience into a streamlined, pro
     ```sh
     latest_release=$(curl -s https://api.github.com/repos/AccursedGalaxy/dotfiles/releases/latest | grep "tarball_url" | cut -d '"' -f 4)
     curl -L $latest_release | tar -xz -C $HOME
-    mv $HOME/AccursedGalaxy-dotfiles-* $HOME/.dotfiles
+    mv $HOME/AccursedGalaxy-dotfiles-* $HOME/dotfiles
     ```
 
 2. **Initialize the Repository:**
@@ -45,8 +45,8 @@ It is designed to transform your command-line experience into a streamlined, pro
     Set up the dotfiles repository in your `$HOME` directory:
 
     ```sh
-    git clone https://github.com/AccursedGalaxy/dotfiles.git $HOME/.dotfiles
-    cd $HOME/.dotfiles
+    git clone https://github.com/AccursedGalaxy/dotfiles.git $HOME/dotfiles
+    cd $HOME/dotfiles
     ```
 
 3. **Run Installation Scripts:**
@@ -62,7 +62,7 @@ It is designed to transform your command-line experience into a streamlined, pro
     To keep your dotfiles up to date, simply run the update script inside the dotfiles directory:
 
     ```sh
-    cd $HOME/.dotfiles
+    cd $HOME/dotfiles
     ./update.sh
     ```
 
