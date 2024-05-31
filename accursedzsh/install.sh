@@ -1,11 +1,5 @@
 #!/bin/sh
 
-
-
-
-
-
-
 # Define the path to the public zsh configuration
 PUBLIC_ZSHRC_PATH="$HOME/dotfiles/accursedzsh/.zshrc"
 
