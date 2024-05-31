@@ -44,9 +44,20 @@ else
     exit 1
 fi
 
+# Check if the sourcing line is present and uncommented in .zshrc
+ZSHRC_PATH="$HOME/.zshrc"
+if grep -q "^source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
+    print_message "Sourcing line is present and uncommented in .zshrc."
+else
+    if grep -q "^#source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
+        print_message "Warning: Sourcing line is present but commented in .zshrc."
+    else
+        print_message "Warning: Sourcing line is missing in .zshrc."
+    fi
+fi
+
 # Inform the user to restart their terminal
 print_message "Please restart your terminal to apply the updates."
-print_message "Make sure the sourcing line in your .zshrc is present and uncommented."
 
 # Optional: Source the updated .zshrc automatically (commented out)
 # source $HOME/.zshrc
