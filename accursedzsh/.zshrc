@@ -19,6 +19,11 @@
 #                                                         \______/               
 # .zshrc - Accursed Galaxy's Dotfiles
 # GitHub: https://github.com/AccursedGalaxy
+# 
+# TODO:
+# - Update README.md to fit the new structure with puglic facing zshrc and private zshrc.
+# -> now users can just keep everything in the private zshrc, and this dotfiles repo will be just adding a sourcing line to the private zshrc.
+# -> This makes it possible for users to keep the personalized stuff while being able to update the public facing zshrc.
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
