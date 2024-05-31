@@ -1,7 +1,13 @@
 #!/bin/sh
 
+
+
+
+
+
+
 # Define the path to the public zsh configuration
-PUBLIC_ZSHRC_PATH="$HOME/dotfiles/accursedzsh/.accursedrc"
+PUBLIC_ZSHRC_PATH="$HOME/dotfiles/accursedzsh/.zshrc"
 
 # Add sourcing line to .zshrc if not already present
 if ! grep -q "source $PUBLIC_ZSHRC_PATH" "$HOME/.zshrc"; then

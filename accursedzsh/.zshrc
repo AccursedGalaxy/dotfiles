@@ -93,11 +93,6 @@ alias nvimconfig="cd ~/.config/nvim && nvim ."
 alias coding="cd ~/github && conda activate DevEnv && nvim ."
 alias hyper="cd ~/.config/hypr && nvim ."
 
-if [ "$(hostname)" = "myria" ]; then
-  alias sentinel='cd ~/github/SentinelBot/ && conda activate SentinelEnv && nvim .'
-  alias dcabot='cd ~/github/Fitzo-Crypto-DCA-Bot/ && conda activate DevEnv && nvim .'
-fi
-
 # General System Administration
 alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
 alias install='sudo apt install'                     # Shortcut for installing packages
@@ -170,19 +165,3 @@ eval $(thefuck --alias)
 mkcd () { mkdir -p "$1" && cd "$1"; }
 # Reload Shell
 reload() { source ~/.zshrc; }
-
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/robin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/robin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/robin/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/robin/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
