@@ -145,14 +145,15 @@ alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
 alias cat='batcat'
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
-alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
-alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
-alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 alias psgrep='ps aux | grep'
 
 #Alias to exit conda environments and go back to root directory.
 alias cde='cd $HOME && conda deactivate'
 
+# Advanced Searching Shit
+alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
+alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
+alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 
 
 #   __         _   _ 
