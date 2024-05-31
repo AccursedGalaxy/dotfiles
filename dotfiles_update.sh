@@ -42,10 +42,12 @@ fi
 
 # Check if the sourcing line is present and uncommented in .zshrc
 ZSHRC_PATH="$HOME/.zshrc"
-if grep -q "^source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
+EXPECTED_SOURCE="source $HOME/dotfiles/accursedzsh/.zshrc"
+
+if grep -q "^$EXPECTED_SOURCE" "$ZSHRC_PATH"; then
     :
 else
-    if grep -q "^#source $DOTFILES_DIR/zsh/custom.zsh" "$ZSHRC_PATH"; then
+    if grep -q "^#$EXPECTED_SOURCE" "$ZSHRC_PATH"; then
         print_message "Warning: Sourcing line is present but commented in .zshrc."
     else
         print_message "Warning: Sourcing line is missing in .zshrc."
