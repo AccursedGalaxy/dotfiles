@@ -27,18 +27,19 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="flazz"
+ZSH_THEME="refined"
+
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-zstyle ':omz:update' frequency 13
+zstyle ':omz:update' frequency 13   # check every 13 days
+
+source $ZSH/oh-my-zsh.sh
 
 ENABLE_CORRECTION="true"
 
 plugins=(
   git
-  zsh-autosuggestions
-  zsh-completions
   zsh-nvm
   zsh-interactive-cd
   zsh-you-should-use
@@ -48,14 +49,57 @@ plugins=(
   zsh-autopair
   zsh-pyenv
   zsh-better-npm-completion
-  zsh-syntax-highlighting
 )
 
-source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+# Initialize Zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+if [ ! -d "$ZINIT_HOME" ]; then
+  mkdir -p "$(dirname "$ZINIT_HOME")"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+fi
+
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Load Zinit plugins
+# zinit ice depth=1; zinit light romkatv/powerlevel10k
+zinit light zsh-users/zsh-syntax-highlighting
+zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
+zinit light Aloxaf/fzf-tab
+
+autoload -U compinit && compinit
+
+# Switch keybindings to vi mode
+bindkey -v
+bindkey '^R' history-search-backward
+bindkey '^S' history-search-forward
+
+HISTSIZE=10000
+HISTFILE=~/.zsh_history
+SAVEHIST=10000
+HISTDUP=erase
+
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
+
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+
+# eval"$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init zsh)"
 
 #  (                                             
 #  )\ )    )               )               )     
@@ -66,9 +110,8 @@ export EDITOR="$VISUAL"
 # \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-< 
 # |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/ 
 
-# Dotfiel Management
 DOTFILES_DIR="$HOME/dotfiles"
-alias update-dotfiles='cd $DOTFILES_DIR && sh update.sh'
+alias udotfiles='cd $DOTFILES_DIR && sh update.sh'
 
 # Pokemon Colorscripts Display
 # More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
@@ -88,6 +131,14 @@ else
   fi
 fi
 
+# SSH Key Configuration
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+if [ -f "$SSH_KEY_PATH" ]; then
+  eval "$(ssh-agent -s)"
+  ssh-add $SSH_KEY_PATH
+fi
+alias sshconfig="nvim ~/.ssh/config"
+
 # Lunar Vim Because sometimes nvim breaks on different machines.. kekw
 alias lvim='/home/robin/.local/bin/lvim'
 
@@ -95,8 +146,16 @@ alias lvim='/home/robin/.local/bin/lvim'
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && nvim ."
-alias coding="cd ~/github && conda activate DevEnv && nvim ."
 alias hyper="cd ~/.config/hypr && nvim ."
+
+# Coding Projects Shortcuts
+
+# Navigate to different Volume Drive "/media/robin/Volume1/github/CryptoDataFetcher"
+alias cdv1="cd /media/robin/Volume1"
+
+# Nagivgate to cdv1 and then to github/CryptoDataFetcher
+alias codefetcher="cdv1/github/CryptoDataFetcher"
+
 
 # General System Administration
 alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
@@ -171,3 +230,27 @@ eval $(thefuck --alias)
 mkcd () { mkdir -p "$1" && cd "$1"; }
 # Reload Shell
 reload() { source ~/.zshrc; }
+
+# Automatically activate poetry environment if pyproject.toml is present in current or parent directories
+function check_poetry_env() {
+    local dir="$PWD"
+    local poetry_bin="$HOME/.local/bin/poetry"  # Replace with your Poetry path if different
+    while [[ "$dir" != "/" ]]; do
+        if [[ -f "$dir/pyproject.toml" ]]; then
+            # Check if already in a Poetry shell to avoid re-initializing
+            if [[ -z "$POETRY_ACTIVE" ]]; then
+                echo "Activating Poetry shell in $dir"
+                "$poetry_bin" shell
+            fi
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
+}
+
+# Add a hook to run the check when changing directories
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd check_poetry_env
+
+# Run the check initially when the terminal opens
+check_poetry_env
