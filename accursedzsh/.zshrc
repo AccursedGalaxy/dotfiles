@@ -1,4 +1,4 @@
-#  $$$$$$\                                                                   $$\ 
+#  $$$$$$\                                                                   $$\
 # $$  __$$\                                                                  $$ |
 # $$ /  $$ | $$$$$$$\  $$$$$$$\ $$\   $$\  $$$$$$\  $$$$$$$\  $$$$$$\   $$$$$$$ |
 # $$$$$$$$ |$$  _____|$$  _____|$$ |  $$ |$$  __$$\$$  _____|$$  __$$\ $$  __$$ |
@@ -6,20 +6,20 @@
 # $$ |  $$ |$$ |      $$ |      $$ |  $$ |$$ |      \____$$\ $$   ____|$$ |  $$ |
 # $$ |  $$ |\$$$$$$$\ \$$$$$$$\ \$$$$$$  |$$ |     $$$$$$$  |\$$$$$$$\ \$$$$$$$ |
 # \__|  \__| \_______| \_______| \______/ \__|     \_______/  \_______| \_______|
-#             $$$$$$\            $$\                                             
-#            $$  __$$\           $$ |                                            
-#            $$ /  \__| $$$$$$\  $$ | $$$$$$\  $$\   $$\ $$\   $$\               
-#            $$ |$$$$\  \____$$\ $$ | \____$$\ \$$\ $$  |$$ |  $$ |              
-#            $$ |\_$$ | $$$$$$$ |$$ | $$$$$$$ | \$$$$  / $$ |  $$ |              
-#            $$ |  $$ |$$  __$$ |$$ |$$  __$$ | $$  $$<  $$ |  $$ |              
-#            \$$$$$$  |\$$$$$$$ |$$ |\$$$$$$$ |$$  /\$$\ \$$$$$$$ |              
-#             \______/  \_______|\__| \_______|\__/  \__| \____$$ |              
-#                                                        $$\   $$ |              
-#                                                        \$$$$$$  |              
-#                                                         \______/               
+#             $$$$$$\            $$\
+#            $$  __$$\           $$ |
+#            $$ /  \__| $$$$$$\  $$ | $$$$$$\  $$\   $$\ $$\   $$\
+#            $$ |$$$$\  \____$$\ $$ | \____$$\ \$$\ $$  |$$ |  $$ |
+#            $$ |\_$$ | $$$$$$$ |$$ | $$$$$$$ | \$$$$  / $$ |  $$ |
+#            $$ |  $$ |$$  __$$ |$$ |$$  __$$ | $$  $$<  $$ |  $$ |
+#            \$$$$$$  |\$$$$$$$ |$$ |\$$$$$$$ |$$  /\$$\ \$$$$$$$ |
+#             \______/  \_______|\__| \_______|\__/  \__| \____$$ |
+#                                                        $$\   $$ |
+#                                                        \$$$$$$  |
+#                                                         \______/
 # .zshrc - Accursed Galaxy's Dotfiles
 # GitHub: https://github.com/AccursedGalaxy
-# 
+#
 # TODO:
 # - Update README.md to fit the new structure with puglic facing zshrc and private zshrc.
 # -> now users can just keep everything in the private zshrc, and this dotfiles repo will be just adding a sourcing line to the private zshrc.
@@ -27,7 +27,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="avit"
+ZSH_THEME="clean"
 
 
 zstyle ':omz:update' mode auto      # update automatically without asking
@@ -55,6 +55,9 @@ plugins=(
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Initialize Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -101,14 +104,14 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # eval"$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"
 
-#  (                                             
-#  )\ )    )               )               )     
-# (()/( ( /(       (    ( /(        (   ( /(     
-#  /(_)))\())  (   )(   )\()) (    ))\  )\())(   
-# (_)) ((_)\   )\ (()\ (_))/  )\  /((_)(_))/ )\  
-# / __|| |(_) ((_) ((_)| |_  ((_)(_))( | |_ ((_) 
-# \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-< 
-# |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/ 
+#  (
+#  )\ )    )               )               )
+# (()/( ( /(       (    ( /(        (   ( /(
+#  /(_)))\())  (   )(   )\()) (    ))\  )\())(
+# (_)) ((_)\   )\ (()\ (_))/  )\  /((_)(_))/ )\
+# / __|| |(_) ((_) ((_)| |_  ((_)(_))( | |_ ((_)
+# \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-<
+# |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/
 
 DOTFILES_DIR="$HOME/dotfiles"
 alias udotfiles='cd $DOTFILES_DIR && sh update.sh'
@@ -215,10 +218,10 @@ alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 
 
-#   __         _   _ 
-#  (_ _|_    _|_ _|_ 
-#  __) |_ |_| |   |  
-#                                       
+#   __         _   _
+#  (_ _|_    _|_ _|_
+#  __) |_ |_| |   |
+#
 
 # thefuck setup
 eval $(thefuck --alias)
@@ -230,6 +233,11 @@ eval $(thefuck --alias)
 mkcd () { mkdir -p "$1" && cd "$1"; }
 # Reload Shell
 reload() { source ~/.zshrc; }
+
+# Add this to your .bashrc, .zshrc, etc.
+if [ -z "$TMUX" ]; then
+    tmux attach -t main || tmux new -s main
+fi
 
 # Automatically activate poetry environment if pyproject.toml is present in current or parent directories
 function check_poetry_env() {
@@ -254,3 +262,6 @@ add-zsh-hook chpwd check_poetry_env
 
 # Run the check initially when the terminal opens
 check_poetry_env
+
+# streakode setup (execute streakode sats on terminal startup)
+streakode stats
