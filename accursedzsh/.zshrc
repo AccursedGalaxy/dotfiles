@@ -239,16 +239,22 @@ if [ -z "$TMUX" ]; then
     tmux attach -t main || tmux new -s main
 fi
 
-# Automatically activate poetry environment if pyproject.toml is present in current or parent directories
+# Automatically activate Poetry environment if pyproject.toml is present in current or parent directories
 function check_poetry_env() {
     local dir="$PWD"
     local poetry_bin="$HOME/.local/bin/poetry"  # Replace with your Poetry path if different
     while [[ "$dir" != "/" ]]; do
         if [[ -f "$dir/pyproject.toml" ]]; then
-            # Check if already in a Poetry shell to avoid re-initializing
-            if [[ -z "$POETRY_ACTIVE" ]]; then
-                echo "Activating Poetry shell in $dir"
-                "$poetry_bin" shell
+            # Check if virtual environment is already active
+            if [[ -z "$VIRTUAL_ENV" ]]; then
+                # Fetch the virtual environment path
+                local venv_path=$("$poetry_bin" env info --path 2>/dev/null)
+                if [[ -n "$venv_path" && -d "$venv_path" ]]; then
+                    echo "Activating Poetry virtual environment at $venv_path"
+                    source "$venv_path/bin/activate"
+                else
+                    echo "Poetry virtual environment not found or not created. Please run 'poetry install'."
+                fi
             fi
             return 0
         fi
