@@ -217,6 +217,9 @@ alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-ran
 alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 
+# Hyperload alias
+alias hyprload="$HOME/.local/share/hyprload/hyprload.sh"
+
 
 #   __         _   _
 #  (_ _|_    _|_ _|_
