@@ -159,26 +159,6 @@ function whichdir($name) {
 }
 
 
-
-# Function to navigate to OneDrive
-function GoToOneDrive {
-    Set-Location -Path '.\OneDrive - Qualcomm\'
-}
-Set-Alias -Name docs -Value GoToOneDrive
-
-# Function to navigate to PSConfig
-function GoToPSConfig {
-    Set-Location -Path 'C:\Users\bohrer\OneDrive - Qualcomm\Documents\WindowsPowerShell\'
-}
-Set-Alias -Name psconfig -Value GoToPSConfig
-
-# Function to open Wiki
-function OpenWiki {
-    Set-Location -Path '.\OneDrive - Qualcomm\wiki\'
-    nvim index.wiki
-}
-Set-Alias -Name wiki -Value OpenWiki
-
 # Function to open Event Viewer
 function OpenEventViewer {
     eventvwr.msc

@@ -17,6 +17,10 @@ These dotfiles are specifically tailored for my personal setup and workflow. Whi
 2. Direct implementation might require significant modifications for your setup
 3. Some features might be dependent on specific hardware or software configurations
 4. Installation scripts assume certain system configurations and paths
+5. Many configuration files contain hardcoded personal directory structures
+6. This repository is currently in transition towards being more public-friendly
+
+**Note**: While I'm working on making these configurations more portable and user-friendly, they currently contain many personal path references and system-specific configurations. If you want to use these dotfiles, you'll need to carefully review and modify paths and settings to match your system.
 
 ## Welcome to My Configuration Universe! 🌌
 
@@ -93,6 +97,15 @@ Core dependencies include:
 - Starship
 - Neovim
 - Various CLI tools (fzf, thefuck, exa, etc.)
+
+### Personal Configurations
+
+These dotfiles separate public and private configurations for security. To set up your personal settings:
+
+1. Copy the template files from `templates/` to their respective locations
+2. Modify the copied files with your personal settings
+3. Keep private configurations in `~/.config/private/` or similar
+4. Never commit personal configuration files to the repository
 
 ### Contributing
 

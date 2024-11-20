@@ -1,0 +1,5 @@
+# Private configurations
+private.conf
+**/private/
+**/*.private.*
+.private/

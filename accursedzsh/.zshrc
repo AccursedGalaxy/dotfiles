@@ -142,9 +142,6 @@ if [ -f "$SSH_KEY_PATH" ]; then
 fi
 alias sshconfig="nvim ~/.ssh/config"
 
-# Lunar Vim Because sometimes nvim breaks on different machines.. kekw
-alias lvim='/home/robin/.local/bin/lvim'
-
 # Navigation
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"

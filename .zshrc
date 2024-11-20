@@ -2,11 +2,6 @@ export TERM=xterm-256color
 # Personal aliases and configurations
 # Include other personal configurations
 # Dotfile Management
-alias d='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
-alias sentinel='cd ~/github/SentinelBot/ && conda activate SentinelEnv && nvim .'
-alias dcabot='cd ~/github/Fitzo-Crypto-DCA-Bot/ && conda activate FitzoCryptoDCAEnv && nvim .'
-alias azsh="cd /home/robin/dotfiles/accursedzsh && nvim .zshrc"
-alias make='noglob make'
 
 unsetopt NO_CORRECT
 
