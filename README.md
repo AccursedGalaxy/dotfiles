@@ -6,70 +6,102 @@
 (| (___\ |(: (____/ //  |.  |   // ___) |.  | \  |___ // ___)_  __/  \\   
 |:       :)\        /   \:  |  (:  (    /\  |( \_|:  (:      "|/" \   :)  
 (________/  \"_____/     \__|   \__/   (__\_|_)_______)_______|_______/   
-```                                                                          
+```
   _______  _______  _______  _______  _______  _______  _______  _______
-  
+
+## ⚠️ Important Notice
+
+These dotfiles are specifically tailored for my personal setup and workflow. While you're welcome to use them as inspiration or reference, please note that:
+
+1. They are heavily customized for my specific system and hardware
+2. Direct implementation might require significant modifications for your setup
+3. Some features might be dependent on specific hardware or software configurations
+4. Installation scripts assume certain system configurations and paths
 
 ## Welcome to My Configuration Universe! 🌌
 
 This repository is my digital garden 🌱, a place where I nurture and grow my system configurations. It's more than just a backup; it's a portal 🌀 to my ideal working environment, carefully crafted and constantly evolving.
 
-It is designed to transform your command-line experience into a streamlined, productive, and enjoyable environment. Here's what you can expect:
-- **Enhanced Command-Line Interface:** Leveraging the power of `zsh` with a highly customizable prompt powered by Starship.
-- **Productivity Boosters:** Includes plugins like `zsh-autosuggestions`, `zsh-syntax-highlighting`, `zsh-history-substring-search`, and `zsh-completions` to make your workflow smoother and more efficient.
-- **Convenient Aliases:** A comprehensive set of aliases for common tasks, such as navigating directories, managing system updates, and handling git commands.
-- **SSH Management:** Automated SSH agent configuration to manage your keys seamlessly.
-- **Visual Enhancements:** Fun and functional additions like Pokémon colorscripts to keep your terminal lively.
-- **Development Ready:** Pre-configured settings for `nvim`, making it easy to dive into coding right away.
-- **Miscellaneous Tools:** Integration with tools like `thefuck` and `fzf` to correct mistakes and find files quickly.
+### Core Components
 
-### What's Inside?
+- **Shell Environment**: Extensive ZSH configuration with custom prompts, plugins, and productivity enhancements
+- **Window Management**: Hyprland configuration with custom keybindings and animations
+- **Development Setup**: Neovim configuration (maintained in a separate repository)
+- **System Utilities**: Various tools and scripts for system management and workflow optimization
 
-- **Shell Magic 🐚:** My custom `zsh` configurations, fine-tuned for a magical command-line experience.
-- **Desktop Alchemy 🎨:** Desktop environment settings that transform my workspace into a productivity elixir.
+### Featured Configurations
 
-### How to Use My Dotfiles
+1. **ZSH Configuration**
+   - Custom prompt using Starship
+   - Extensive plugin system including syntax highlighting, autosuggestions, and completions
+   - Intelligent history management
+   - Poetry auto-activation for Python projects
+   - Custom aliases for git, system management, and development workflows
 
-1. **Clone and Conquer:**
+2. **Hyprland Setup**
+   - Custom animations and visual effects
+   - Automated wallpaper management
+   - Gesture support
+   - Multi-monitor handling
+   - Custom keybindings for optimal workflow
 
-    Clone the latest release to your `$HOME` directory:
+3. **System Integration**
+   - Automatic theme management
+   - Hardware-specific optimizations
+   - Custom scripts for system management
+   - Integration with various development tools
 
-    ```sh
-    latest_release=$(curl -s https://api.github.com/repos/AccursedGalaxy/dotfiles/releases/latest | grep "tarball_url" | cut -d '"' -f 4)
-    curl -L $latest_release | tar -xz -C $HOME
-    mv $HOME/AccursedGalaxy-dotfiles-* $HOME/dotfiles
-    ```
+### Installation
 
-2. **Initialize the Repository:**
+1. **Clone the Repository:**
+```bash
+git clone https://github.com/AccursedGalaxy/dotfiles.git $HOME/dotfiles
+cd $HOME/dotfiles
+```
 
-    Set up the dotfiles repository in your `$HOME` directory:
+2. **Run Installation Scripts:**
+```bash
+./install.sh
+```
 
-    ```sh
-    git clone https://github.com/AccursedGalaxy/dotfiles.git $HOME/dotfiles
-    cd $HOME/dotfiles
-    ```
+3. **Update Configuration:**
+```bash
+./update.sh
+```
 
-3. **Run Installation Scripts:**
+### Maintenance
 
-    Run the individual install scripts to set up your environment. These scripts will add necessary sourcing lines to your respective configuration files like `.zshrc`.
+The repository includes update scripts that help maintain the latest configurations while preserving your personal customizations. The update system is designed to:
 
-    ```sh
-    ./install.sh
-    ```
+- Fetch the latest releases
+- Preserve user-specific configurations
+- Maintain system stability
+- Provide backup options for critical changes
 
-4. **Update Your Dotfiles:**
+### Structure
 
-    To keep your dotfiles up to date, simply run the update script inside the dotfiles directory:
+- `accursedzsh/`: ZSH configurations and custom scripts
+- `.config/hypr/`: Hyprland window manager configurations
+- `.config/neofetch/`: System information display configuration
+- `.config/starship.toml`: Terminal prompt customization
 
-    ```sh
-    cd $HOME/dotfiles
-    ./update.sh
-    ```
+### Dependencies
 
-### Disclaimer
+Core dependencies include:
+- ZSH with Oh-My-ZSH
+- Hyprland
+- Starship
+- Neovim
+- Various CLI tools (fzf, thefuck, exa, etc.)
 
-🔒 **Security Notice:** For the sake of security, any sensitive or personal data has been excluded or anonymized.
+### Contributing
+
+While these dotfiles are primarily for personal use, suggestions and improvements are welcome through issues and pull requests.
+
+### License
+
+This project is open-sourced under the [MIT License](LICENSE.md). Copyright (c) 2024 AccursedGalaxy.
 
 ---
 
-Stay tuned for more updates and feel free to explore and get inspired! 🚀
+🔒 **Security Notice:** For security reasons, sensitive and personal data has been excluded or anonymized.
