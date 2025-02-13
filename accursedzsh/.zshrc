@@ -19,27 +19,22 @@
 #                                                         \______/
 # .zshrc - Accursed Galaxy's Dotfiles
 # GitHub: https://github.com/AccursedGalaxy
-#
-# TODO:
-# - Update README.md to fit the new structure with puglic facing zshrc and private zshrc.
-# -> now users can just keep everything in the private zshrc, and this dotfiles repo will be just adding a sourcing line to the private zshrc.
-# -> This makes it possible for users to keep the personalized stuff while being able to update the public facing zshrc.
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="clean"
-
+ZSH_THEME="awesomepanda"
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-zstyle ':omz:update' frequency 13   # check every 13 days
-
-source $ZSH/oh-my-zsh.sh
+zstyle ':omz:update' frequency 13
 
 ENABLE_CORRECTION="true"
 
 plugins=(
   git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  zsh-completions
   zsh-nvm
   zsh-interactive-cd
   zsh-you-should-use
@@ -51,58 +46,11 @@ plugins=(
   zsh-better-npm-completion
 )
 
+source $ZSH/oh-my-zsh.sh
 
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Initialize Zinit
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-if [ ! -d "$ZINIT_HOME" ]; then
-  mkdir -p "$(dirname "$ZINIT_HOME")"
-  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-source "${ZINIT_HOME}/zinit.zsh"
-
-# Load Zinit plugins
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab
-
-autoload -U compinit && compinit
-
-# Switch keybindings to vi mode
-bindkey -v
-bindkey '^R' history-search-backward
-bindkey '^S' history-search-forward
-
-HISTSIZE=10000
-HISTFILE=~/.zsh_history
-SAVEHIST=10000
-HISTDUP=erase
-
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-
-# eval"$(zoxide init --cmd cd zsh)"
-# eval "$(zoxide init zsh)"
 
 #  (
 #  )\ )    )               )               )
@@ -112,9 +60,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 # / __|| |(_) ((_) ((_)| |_  ((_)(_))( | |_ ((_)
 # \__ \| ' \ / _ \| '_||  _|/ _| | || ||  _|(_-<
 # |___/|_||_|\___/|_|   \__|\__|  \_,_| \__|/__/
-
-DOTFILES_DIR="$HOME/dotfiles"
-alias udotfiles='cd $DOTFILES_DIR && sh update.sh'
 
 # Pokemon Colorscripts Display
 # More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
@@ -134,28 +79,14 @@ else
   fi
 fi
 
-# SSH Key Configuration
-export SSH_KEY_PATH="~/.ssh/id_rsa"
-if [ -f "$SSH_KEY_PATH" ]; then
-  eval "$(ssh-agent -s)"
-  ssh-add $SSH_KEY_PATH
-fi
-alias sshconfig="nvim ~/.ssh/config"
+# Lunar Vim Because sometimes nvim breaks on different machines.. kekw
+alias lvim='/home/robin/.local/bin/lvim'
 
 # Navigation
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && nvim ."
 alias hyper="cd ~/.config/hypr && nvim ."
-
-# Coding Projects Shortcuts
-
-# Navigate to different Volume Drive "/media/robin/Volume1/github/CryptoDataFetcher"
-alias cdv1="cd /media/robin/Volume1"
-
-# Nagivgate to cdv1 and then to github/CryptoDataFetcher
-alias codefetcher="cdv1/github/CryptoDataFetcher"
-
 
 # General System Administration
 alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
@@ -204,18 +135,11 @@ alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
 alias cat='batcat'
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
-alias psgrep='ps aux | grep'
 
-#Alias to exit conda environments and go back to root directory.
-alias cde='cd $HOME && conda deactivate'
-
-# Advanced Searching Shit
 alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
 alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
-
-# Hyperload alias
-alias hyprload="$HOME/.local/share/hyprload/hyprload.sh"
+alias psgrep='ps aux | grep'
 
 
 #   __         _   _
@@ -231,43 +155,6 @@ eval $(thefuck --alias)
 
 # Create Dir and CD into
 mkcd () { mkdir -p "$1" && cd "$1"; }
+
 # Reload Shell
 reload() { source ~/.zshrc; }
-
-# Add this to your .bashrc, .zshrc, etc.
-if [ -z "$TMUX" ]; then
-    tmux attach -t main || tmux new -s main
-fi
-
-# Automatically activate Poetry environment if pyproject.toml is present in current or parent directories
-function check_poetry_env() {
-    local dir="$PWD"
-    local poetry_bin="$HOME/.local/bin/poetry"  # Replace with your Poetry path if different
-    while [[ "$dir" != "/" ]]; do
-        if [[ -f "$dir/pyproject.toml" ]]; then
-            # Check if virtual environment is already active
-            if [[ -z "$VIRTUAL_ENV" ]]; then
-                # Fetch the virtual environment path
-                local venv_path=$("$poetry_bin" env info --path 2>/dev/null)
-                if [[ -n "$venv_path" && -d "$venv_path" ]]; then
-                    echo "Activating Poetry virtual environment at $venv_path"
-                    source "$venv_path/bin/activate"
-                else
-                    echo "Poetry virtual environment not found or not created. Please run 'poetry install'."
-                fi
-            fi
-            return 0
-        fi
-        dir=$(dirname "$dir")
-    done
-}
-
-# Add a hook to run the check when changing directories
-autoload -Uz add-zsh-hook
-add-zsh-hook chpwd check_poetry_env
-
-# Run the check initially when the terminal opens
-check_poetry_env
-
-# streakode setup (execute streakode sats on terminal startup)
-streakode stats
