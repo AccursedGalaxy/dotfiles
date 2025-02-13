@@ -109,7 +109,8 @@ alias reboot='sudo systemctl reboot'                 # Reboot system quickly
 alias poweroff='sudo systemctl poweroff'             # Power-off system quickly
 
 # File Management
-alias ls='exa --icons -F -H --group-directories-first --git -1' # List all files in one column
+alias ls='lsd --group-dirs first -F --icon=always'  # List all files in long format
+alias tree='lsd --tree'                           # List all files in tree format
 alias ll='ls -alF'                                   # List all files in long format
 alias rm='rm -i'                                     # Interactive removal mode
 alias cp='cp -i'                                     # Interactive copy mode
@@ -133,10 +134,12 @@ alias gstd='git stash drop'                          # Git stash drop
 # Miscellaneous
 alias grep='grep --color=auto'                       # Colorized grep output
 alias c='clear'                                      # Clear terminal display
-alias cat='batcat'
+alias bat='batcat --theme=TwoDark'                                   # Better cat command
 alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
 
 alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
+alias du='dust'
+alias ps='procs'
 alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 alias psgrep='ps aux | grep'
