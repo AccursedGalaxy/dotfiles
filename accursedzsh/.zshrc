@@ -20,34 +20,50 @@
 # .zshrc - Accursed Galaxy's Dotfiles
 # GitHub: https://github.com/AccursedGalaxy
 
-# Path to your oh-my-zsh installation.
+#------------------
+# Core ZSH Settings
+#------------------
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="awesomepanda"
 
-zstyle ':omz:update' mode auto      # update automatically without asking
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+# Update settings
+zstyle ':omz:update' mode auto
+zstyle ':omz:update' mode reminder
 zstyle ':omz:update' frequency 13
 
 ENABLE_CORRECTION="true"
 
+#------------------
+# Plugin Management
+#------------------
 plugins=(
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-  zsh-completions
-  zsh-nvm
-  zsh-interactive-cd
-  zsh-you-should-use
-  zsh-history-substring-search
-  zsh-vi-mode
-  zsh-navigation-tools
-  zsh-autopair
-  zsh-pyenv
-  zsh-better-npm-completion
+    # Git & Development
+    git
+    zsh-nvm
+    zsh-pyenv
+    zsh-better-npm-completion
+    
+    # Shell Enhancement
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
+    zsh-interactive-cd
+    zsh-you-should-use
+    
+    # Navigation & History
+    zsh-history-substring-search
+    zsh-vi-mode
+    zsh-navigation-tools
+    
+    # Utilities
+    zsh-autopair
 )
 
 source $ZSH/oh-my-zsh.sh
 
+#------------------
+# Environment Variables
+#------------------
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -82,82 +98,93 @@ fi
 # Lunar Vim Because sometimes nvim breaks on different machines.. kekw
 alias lvim='/home/robin/.local/bin/lvim'
 
-# Navigation
+#------------------
+# Application Aliases
+#------------------
+# Editor Configuration
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 alias nvimconfig="cd ~/.config/nvim && nvim ."
 alias hyper="cd ~/.config/hypr && nvim ."
 
-# General System Administration
-alias update='sudo apt update && sudo apt upgrade'   # Update and upgrade packages
-alias install='sudo apt install'                     # Shortcut for installing packages
-alias remove='sudo apt remove'                       # Shortcut for removing packages
-alias search='apt search'                            # Search for packages
-alias df='df -h'                                     # Display free disk space in human-readable format
-alias du='du -h'                                     # Disk usage in human-readable format
-alias htop='sudo btop'                               # System monitoring utility
+#------------------
+# System Aliases
+#------------------
+# Package Management
+alias update='sudo apt update && sudo apt upgrade'
+alias install='sudo apt install'
+alias remove='sudo apt remove'
+alias search='apt search'
 
-# Networking
-alias ports='netstat -tulanp'                        # Show open ports
-alias myip='curl http://ipecho.net/plain; echo'      # Display external IP address
-alias flushdns='sudo systemctl restart nscd'         # Flush DNS cache
-
-# System Monitoring and Management
-alias meminfo='free -m -l -t'                        # Memory usage in MB
-alias cpuinfo='lscpu'                                # CPU model and details
-alias reboot='sudo systemctl reboot'                 # Reboot system quickly
-alias poweroff='sudo systemctl poweroff'             # Power-off system quickly
-
-# File Management
-alias ls='lsd --group-dirs first -F --icon=always'  # List all files in long format
-alias tree='lsd --tree'                           # List all files in tree format
-alias ll='ls -alF'                                   # List all files in long format
-alias rm='rm -i'                                     # Interactive removal mode
-alias cp='cp -i'                                     # Interactive copy mode
-alias mv='mv -i'                                     # Interactive move mode
-alias mkdir='mkdir -pv'                              # Create parent directories as needed
-
-# Git Aliases
-alias gs='git status'                                # Git status
-alias ga='git add'                                   # Git add
-alias gc='git commit'                                # Git commit
-alias gp='git push'                                  # Git push
-alias gpull='git pull'                               # Git pull
-alias glog='git log --oneline --decorate --graph'    # Git log graph
-alias gco='git checkout'                             # Git checkout
-alias gb='git branch'                                # Git branch
-alias gcm='git checkout main'                        # Git checkout main
-alias gst='git stash'                                # Git stash
-alias gsta='git stash apply'                         # Git stash apply
-alias gstd='git stash drop'                          # Git stash drop
-
-# Miscellaneous
-alias grep='grep --color=auto'                       # Colorized grep output
-alias c='clear'                                      # Clear terminal display
-alias bat='batcat --theme=TwoDark'                                   # Better cat command
-alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
-
-alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
+# System Monitoring
+alias df='df -h'
 alias du='dust'
 alias ps='procs'
+alias htop='sudo btop'
+alias meminfo='free -m -l -t'
+alias cpuinfo='lscpu'
+
+# Networking
+alias ports='netstat -tulanp'
+alias myip='curl http://ipecho.net/plain; echo'
+alias flushdns='sudo systemctl restart nscd'
+
+# System Control
+alias reboot='sudo systemctl reboot'
+alias poweroff='sudo systemctl poweroff'
+
+#------------------
+# File Management Aliases
+#------------------
+alias ls='lsd --group-dirs first -F --icon=always'
+alias tree='lsd --tree'
+alias ll='ls -alF'
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+alias mkdir='mkdir -pv'
+alias bat='batcat --theme=TwoDark'
+
+#------------------
+# Git Aliases
+#------------------
+alias gs='git status'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gpull='git pull'
+alias glog='git log --oneline --decorate --graph'
+alias gco='git checkout'
+alias gb='git branch'
+alias gcm='git checkout main'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+
+#------------------
+# Search & Find Utilities
+#------------------
+alias grep='grep --color=auto'
+alias ffind='fzf --preview "batcat --color=always --style=header,grid --line-range :500 {}" --bind "enter:execute(nvim {})"'
 alias histsearch='history | fzf | awk "{print \$2}" | xargs -I {} bash -c "{}"'
 alias killproc='ps aux | fzf | awk "{print \$2}" | xargs kill -9'
 alias psgrep='ps aux | grep'
+alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__pycache__/*" -not -path "*/.venv/*" -not -path "*/.git/*" -print0 | xargs -0 cat | wc -l'
 
+#------------------
+# Custom Functions
+#------------------
+# Create directory and cd into it
+mkcd () { mkdir -p "$1" && cd "$1"; }
 
-#   __         _   _
-#  (_ _|_    _|_ _|_
-#  __) |_ |_| |   |
-#
+# Reload shell
+reload() { source ~/.zshrc; }
 
+#------------------
+# Additional Tools
+#------------------
 # thefuck setup
 eval $(thefuck --alias)
 
 # FZF Configuration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Create Dir and CD into
-mkcd () { mkdir -p "$1" && cd "$1"; }
-
-# Reload Shell
-reload() { source ~/.zshrc; }
