@@ -1,10 +1,11 @@
+# Terminal Configuration
 export TERM=xterm-256color
-# Personal aliases and configurations
-# Include other personal configurations
 unsetopt NO_CORRECT
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
+#------------------
+# Package Managers
+#------------------
+# Conda Configuration
 __conda_setup="$('/home/robin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
@@ -17,24 +18,27 @@ else
 fi
 unset __conda_setup
 
-# <<< conda initialize <<<
-source /home/robin/dotfiles/accursedzsh/.zshrc
-source ~/.zsh-alias-tips/alias-tips.plugin.zsh
+# NVM Configuration
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-# bun completions
-[ -s "/home/robin/.bun/_bun" ] && source "/home/robin/.bun/_bun"
-
-# bun
+# Bun Configuration
 export BUN_INSTALL="$HOME/.bun"
+[ -s "/home/robin/.bun/_bun" ] && source "/home/robin/.bun/_bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#------------------
+# Language Paths
+#------------------
+# Go Configuration
+export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$GOPATH/bin
+
+#------------------
+# Source Files
+#------------------
+# Load main configuration
+source /home/robin/dotfiles/accursedzsh/.zshrc
+source ~/.zsh-alias-tips/alias-tips.plugin.zsh
