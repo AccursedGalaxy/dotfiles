@@ -42,19 +42,19 @@ plugins=(
     zsh-nvm
     zsh-pyenv
     zsh-better-npm-completion
-    
+
     # Shell Enhancement
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
     zsh-interactive-cd
     zsh-you-should-use
-    
+
     # Navigation & History
     zsh-history-substring-search
     zsh-vi-mode
     zsh-navigation-tools
-    
+
     # Utilities
     zsh-autopair
 )
@@ -143,7 +143,7 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias mkdir='mkdir -pv'
-alias bat='batcat --theme=TwoDark'
+alias cat='batcat --theme=TwoDark'
 
 #------------------
 # Git Aliases
