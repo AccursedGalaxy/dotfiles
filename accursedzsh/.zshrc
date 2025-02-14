@@ -24,7 +24,7 @@
 # Core ZSH Settings
 #------------------
 export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="awesomepanda"
+ZSH_THEME="jbergantine"
 
 # Update settings
 zstyle ':omz:update' mode auto
@@ -137,6 +137,7 @@ alias poweroff='sudo systemctl poweroff'
 # File Management Aliases
 #------------------
 alias ls='lsd --group-dirs first -F --icon=always'
+alias l='lsa'
 alias tree='lsd --tree'
 alias ll='ls -alF'
 alias rm='rm -i'
