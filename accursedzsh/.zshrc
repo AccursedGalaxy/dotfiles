@@ -178,8 +178,8 @@ alias countpy='find . -name "*.py" -not -path "*/migrations/*" -not -path "*/__p
 # Create directory and cd into it
 mkcd () { mkdir -p "$1" && cd "$1"; }
 
-# Reload shell
-reload() { source ~/.zshrc; }
+# Reload shell (clear before running)
+reload () { clear && exec zsh; }
 
 #------------------
 # Additional Tools
