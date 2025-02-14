@@ -54,10 +54,33 @@ plugins=(
     zsh-history-substring-search
     zsh-vi-mode
     zsh-navigation-tools
+    zoxide
 
     # Utilities
     zsh-autopair
 )
+
+# Add colorful man pages
+export LESS_TERMCAP_mb=$'\e[1;32m'
+export LESS_TERMCAP_md=$'\e[1;32m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[01;33m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[1;4;31m'
+
+# Add directory stack navigation
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+# Add better history handling
+setopt EXTENDED_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
 
 source $ZSH/oh-my-zsh.sh
 
@@ -189,3 +212,8 @@ eval $(thefuck --alias)
 
 # FZF Configuration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Auto Start tmux and attach to last session
+if [ -z "$TMUX" ]; then
+  tmux attach-session -t default || tmux new-session -s default
+fi
