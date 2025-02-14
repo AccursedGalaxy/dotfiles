@@ -202,6 +202,11 @@ alias gsta='git stash apply'
 alias gstd='git stash drop'
 
 #------------------
+# Custom Aliases
+# -----------------
+alias vaults='cd $HOME/vaults/new && nvim .'
+
+#------------------
 # Search & Find Utilities
 #------------------
 alias grep='grep --color=auto'
