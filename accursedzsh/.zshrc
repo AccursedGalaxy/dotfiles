@@ -117,6 +117,9 @@ export EDITOR="$VISUAL"
 # More info: https://gitlab.com/phoneybadger/pokemon-colorscripts#on-other-distros-and-macos
 pokemon-colorscripts --no-title -s -r
 
+# Streakode Display
+streakode stats
+
 # SSH Agent Configuration
 # Start SSH-Agent if not already running and add your default SSH key
 if ! pgrep -u "$USER" ssh-agent > /dev/null 2>&1; then
