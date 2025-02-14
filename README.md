@@ -1,11 +1,11 @@
 ```
- ________     ______ ___________ _______ __   ___      _______  ________  
-|"      "\   /    " ("     _   ")"     "|" \ |"  |    /"     "|/"       ) 
-(.  ___  :) // ____  )__/  \\__(: ______)|  |||  |   (: ______|:   \___/  
-|: \   ) ||/  /    ) :) \\_ /   \/    | |:  ||:  |    \/    |  \___  \    
-(| (___\ |(: (____/ //  |.  |   // ___) |.  | \  |___ // ___)_  __/  \\   
-|:       :)\        /   \:  |  (:  (    /\  |( \_|:  (:      "|/" \   :)  
-(________/  \"_____/     \__|   \__/   (__\_|_)_______)_______|_______/   
+ ________     ______ ___________ _______ __   ___      _______  ________
+|"      "\   /    " ("     _   ")"     "|" \ |"  |    /"     "|/"       )
+(.  ___  :) // ____  )__/  \\__(: ______)|  |||  |   (: ______|:   \___/
+|: \   ) ||/  /    ) :) \\_ /   \/    | |:  ||:  |    \/    |  \___  \
+(| (___\ |(: (____/ //  |.  |   // ___) |.  | \  |___ // ___)_  __/  \\
+|:       :)\        /   \:  |  (:  (    /\  |( \_|:  (:      "|/" \   :)
+(________/  \"_____/     \__|   \__/   (__\_|_)_______)_______|_______/
 ```
   _______  _______  _______  _______  _______  _______  _______  _______
 
@@ -22,90 +22,92 @@ These dotfiles are specifically tailored for my personal setup and workflow. Whi
 
 **Note**: While I'm working on making these configurations more portable and user-friendly, they currently contain many personal path references and system-specific configurations. If you want to use these dotfiles, you'll need to carefully review and modify paths and settings to match your system.
 
-## Welcome to My Configuration Universe! 🌌
-
-This repository is my digital garden 🌱, a place where I nurture and grow my system configurations. It's more than just a backup; it's a portal 🌀 to my ideal working environment, carefully crafted and constantly evolving.
-
-### Core Components
-
-- **Shell Environment**: Extensive ZSH configuration with custom prompts, plugins, and productivity enhancements
-- **Window Management**: Hyprland configuration with custom keybindings and animations
-- **Development Setup**: Neovim configuration (maintained in a separate repository)
-- **System Utilities**: Various tools and scripts for system management and workflow optimization
-
-### Featured Configurations
-
-1. **ZSH Configuration**
-   - Custom prompt using Starship
-   - Extensive plugin system including syntax highlighting, autosuggestions, and completions
-   - Intelligent history management
-   - Poetry auto-activation for Python projects
-   - Custom aliases for git, system management, and development workflows
-
-2. **Hyprland Setup**
-   - Custom animations and visual effects
-   - Automated wallpaper management
-   - Gesture support
-   - Multi-monitor handling
-   - Custom keybindings for optimal workflow
-
-3. **System Integration**
-   - Automatic theme management
-   - Hardware-specific optimizations
-   - Custom scripts for system management
-   - Integration with various development tools
-
-### Installation
-
 1. **Clone the Repository:**
 ```bash
 git clone https://github.com/AccursedGalaxy/dotfiles.git $HOME/dotfiles
 cd $HOME/dotfiles
 ```
 
-2. **Run Installation Scripts:**
+2. **Install GNU Stow:**
 ```bash
-./install.sh
+# On Debian/Ubuntu
+sudo apt install stow
+
+# On Arch Linux
+sudo pacman -S stow
 ```
 
-3. **Update Configuration:**
+3. **Deploy Configurations:**
 ```bash
-./update.sh
+# Deploy all configurations
+stow .
+
+# Or deploy specific configurations
+stow zsh
+stow hypr
+stow neovim
 ```
 
-### Maintenance
+### Core Components
 
-The repository includes update scripts that help maintain the latest configurations while preserving your personal customizations. The update system is designed to:
+- **Shell Environment**: ZSH configuration with Starship prompt and extensive plugin system
+- **Window Management**: Hyprland setup with custom animations and workflow optimizations
+- **Development Setup**: Neovim configuration (maintained in a separate repository)
+- **Terminal Multiplexer**: Tmux configuration for enhanced terminal workflow
+- **System Utilities**: Curated collection of CLI tools and productivity enhancers
 
-- Fetch the latest releases
-- Preserve user-specific configurations
-- Maintain system stability
-- Provide backup options for critical changes
+### Featured Configurations
 
-### Structure
+1. **ZSH Configuration**
+   - Starship prompt with custom theme
+   - Extensive plugin system for enhanced productivity
+   - Intelligent history management
+   - Development environment integrations (Python, Node.js, Go)
+   - Custom aliases and functions
 
-- `accursedzsh/`: ZSH configurations and custom scripts
-- `.config/hypr/`: Hyprland window manager configurations
-- `.config/neofetch/`: System information display configuration
-- `.config/starship.toml`: Terminal prompt customization
+2. **Hyprland Setup**
+   - Dynamic tiling window management
+   - Custom animations and gestures
+   - Multi-monitor support
+   - Automated wallpaper management
+   - Hardware-specific optimizations
+
+3. **Development Environment**
+   - Neovim configuration (separate repository)
+   - Language-specific tooling
+   - Git workflow optimizations
+   - Project management utilities
 
 ### Dependencies
 
-Core dependencies include:
-- ZSH with Oh-My-ZSH
-- Hyprland
+Core dependencies:
+- GNU Stow (for dotfile management)
+- ZSH + Oh-My-ZSH
 - Starship
+- Hyprland
 - Neovim
-- Various CLI tools (fzf, thefuck, exa, etc.)
+- Tmux
+- Additional CLI tools (fzf, bat, lsd, etc.)
 
-### Personal Configurations
+### Structure
 
-These dotfiles separate public and private configurations for security. To set up your personal settings:
+```
+dotfiles/
+├── zsh/         # ZSH configuration and scripts
+├── hypr/        # Hyprland window manager setup
+├── tmux/        # Tmux configuration
+├── neofetch/    # System information display
+└── starship/    # Terminal prompt customization
+```
 
-1. Copy the template files from `templates/` to their respective locations
-2. Modify the copied files with your personal settings
-3. Keep private configurations in `~/.config/private/` or similar
-4. Never commit personal configuration files to the repository
+### Private Configurations
+
+For security and personalization:
+
+1. Create a `private` directory in your home folder
+2. Store sensitive configurations there
+3. Use the provided templates as a base
+4. Never commit private configurations to the repository
 
 ### Contributing
 
@@ -117,4 +119,4 @@ This project is open-sourced under the [MIT License](LICENSE.md). Copyright (c) 
 
 ---
 
-🔒 **Security Notice:** For security reasons, sensitive and personal data has been excluded or anonymized.
+🔒 **Security Notice:** Sensitive and personal data has been excluded or anonymized.

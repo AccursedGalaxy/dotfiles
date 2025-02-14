@@ -6,14 +6,14 @@ unsetopt NO_CORRECT
 # Package Managers
 #------------------
 # Conda Configuration
-__conda_setup="$('/home/robin/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/robin/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/robin/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/robin/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -25,7 +25,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # Bun Configuration
 export BUN_INSTALL="$HOME/.bun"
-[ -s "/home/robin/.bun/_bun" ] && source "/home/robin/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 #------------------
@@ -40,5 +40,5 @@ export PATH=$PATH:$GOPATH/bin
 # Source Files
 #------------------
 # Load main configuration
-source /home/robin/dotfiles/accursedzsh/.zshrc
+source $HOME/dotfiles/accursedzsh/.zshrc
 source ~/.zsh-alias-tips/alias-tips.plugin.zsh
