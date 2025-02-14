@@ -229,7 +229,7 @@ eval $(thefuck --alias)
 # FZF Configuration
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Auto Start tmux and attach to last session
-if [ -z "$TMUX" ]; then
-  tmux attach-session -t default || tmux new-session -s default
+# Auto Start tmux and attach to last used session, if we don't find one, create a new session
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux attach-session || tmux new-session
 fi
