@@ -204,7 +204,7 @@ alias gstd='git stash drop'
 #------------------
 # Custom Aliases
 # -----------------
-alias vaults='cd $HOME/vaults/new && nvim .'
+alias notes='cd ~/vaults/new && nvim .'
 
 #------------------
 # Search & Find Utilities
