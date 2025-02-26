@@ -232,7 +232,7 @@ reload () { clear && exec zsh; }
 eval $(thefuck --alias)
 
 # FZF Configuration
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh BUG: This line returns "unkown option --zsh"
 
 # Auto Start tmux and attach to last used session, if we don't find one, create a new session
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
