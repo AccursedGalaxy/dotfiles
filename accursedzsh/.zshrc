@@ -175,14 +175,10 @@ alias poweroff='sudo systemctl poweroff'
 #------------------
 # File Management Aliases
 #------------------
-alias ls='lsd --group-dirs first -F --icon=always'
-alias l='lsa'
-alias tree='lsd --tree'
-alias ll='ls -alF'
-alias rm='rm -i'
-alias cp='cp -i'
-alias mv='mv -i'
-alias mkdir='mkdir -pv'
+alias ls='exa --git --color=always'
+alias l='exa -l --git --color=always'
+alias la='exa -la --git --color=always'
+alias ll='exa -l --git --color=always'
 alias cat='batcat --theme=TwoDark'
 
 #------------------
