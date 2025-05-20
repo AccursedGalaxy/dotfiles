@@ -6,7 +6,7 @@ import Audio from 'resource:///com/github/Aylur/ags/service/audio.js';
 import SystemTray from 'resource:///com/github/Aylur/ags/service/systemtray.js';
 const { execAsync } = Utils;
 import Indicator from '../../../services/indicator.js';
-import { StatusIcons } from '../../.commonwidgets/statusicons.js';
+import { CustomStatusIcons } from '../../.commonwidgets/customstatusicons.js';
 import { Tray } from "./tray.js";
 import { distance } from '../../.miscutils/mathfuncs.js';
 
@@ -34,7 +34,7 @@ const SeparatorDot = () => Widget.Revealer({
 
 export default (monitor = 0) => {
     const barTray = Tray();
-    const barStatusIcons = StatusIcons({
+    const barStatusIcons = CustomStatusIcons({
         className: 'bar-statusicons',
         setup: (self) => self.hook(App, (self, currentName, visible) => {
             if (currentName === 'sideright') {
