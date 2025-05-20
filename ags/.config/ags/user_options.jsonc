@@ -31,7 +31,7 @@
         "keepVisible": true
     },
     "ai": {
-        "defaultGPTProvider": "openrouter_gpt4"
+        "defaultGPTProvider": "openrouter_claude_thinking"
     },
     "appearance": {
         "cursor": {

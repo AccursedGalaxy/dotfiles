@@ -21,30 +21,30 @@ function createOpenRouterModel(name, modelId, description = "") {
 }
 
 const PROVIDERS = {
-    "openrouter_o4": createOpenRouterModel(
-        "Claude Opus",
-        "anthropic/claude-3-opus:beta",
-        "Anthropic's most powerful model - handles complex tasks with remarkable understanding"
+    "openrouter_gpt4o_mini": createOpenRouterModel(
+        "GPT-4o Mini",
+        "openai/gpt-4o-mini",
+        "OpenAI's compact but powerful assistant model - fast and efficient for most tasks"
     ),
-    "openrouter_o4_mini": createOpenRouterModel(
-        "Claude Sonnet",
-        "anthropic/claude-3-sonnet:beta",
+    "openrouter_gpt41": createOpenRouterModel(
+        "GPT-4.1",
+        "openai/gpt-4.1",
+        "OpenAI's advanced reasoning model with extended capabilities"
+    ),
+    "openrouter_claude_sonnet": createOpenRouterModel(
+        "Claude 3.7 Sonnet",
+        "anthropic/claude-3.7-sonnet",
         "Anthropic's balanced model - great for most tasks with excellent reliability"
     ),
-    "openrouter_gpt4": createOpenRouterModel(
-        "GPT-4 Turbo",
-        "openai/gpt-4-turbo",
-        "OpenAI's most capable model - handles complex tasks with high reliability"
+    "openrouter_gemini": createOpenRouterModel(
+        "Gemini 2.0 Flash",
+        "google/gemini-2.0-flash-001",
+        "Google's fastest Gemini model - efficient for quick responses"
     ),
-    "openrouter_llama3": createOpenRouterModel(
-        "Llama 3 70B",
-        "meta-llama/llama-3-70b-instruct",
-        "Meta's largest Llama 3 model - powerful open source reasoning"
-    ),
-    "openrouter_mistral": createOpenRouterModel(
-        "Mistral Large",
-        "mistralai/mistral-large-latest",
-        "Mistral's flagship model - excellent reasoning capabilities with strong performance"
+    "openrouter_claude_thinking": createOpenRouterModel(
+        "Claude 3.7 Sonnet (Thinking)",
+        "anthropic/claude-3.7-sonnet:thinking",
+        "Anthropic's Sonnet model with reasoning capabilities enabled"
     ),
 };
 
@@ -164,7 +164,7 @@ class GPTService extends Service {
     }
 
     _assistantPrompt = true;
-    _currentProvider = PROVIDERS[userOptions.ai.defaultGPTProvider] ? userOptions.ai.defaultGPTProvider : Object.keys(PROVIDERS)[0];
+    _currentProvider = PROVIDERS[userOptions.ai.defaultGPTProvider] ? userOptions.ai.defaultGPTProvider : "openrouter_gpt4o_mini";
     _requestCount = 0;
     _temperature = userOptions.ai.defaultTemperature;
     _messages = [];
