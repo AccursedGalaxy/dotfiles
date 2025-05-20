@@ -50,4 +50,30 @@ else
     echo -e "${RED}No AGS config found in ~/.config/ags${NC}"
 fi
 
+# Neofetch configuration
+if [ -d ~/.config/neofetch ]; then
+    echo -e "${GREEN}Adopting Neofetch config...${NC}"
+    mkdir -p neofetch/.config/neofetch
+    
+    # Recursive copy from home directory to dotfiles repository
+    cp -r ~/.config/neofetch/* neofetch/.config/neofetch/
+    
+    # Remove original directory and create symlink
+    echo -e "${GREEN}Creating backup of original Neofetch config...${NC}"
+    mv ~/.config/neofetch ~/.config/neofetch.bak
+    
+    # Create the parent directory and symlink
+    mkdir -p ~/.config
+    ln -sf $(readlink -f neofetch) ~/.config/neofetch
+    
+    echo -e "${GREEN}Neofetch config adopted successfully!${NC}"
+else
+    echo -e "${RED}No Neofetch config found in ~/.config/neofetch${NC}"
+    
+    # Create the parent directory and symlink
+    mkdir -p ~/.config
+    ln -sf $(readlink -f neofetch) ~/.config/neofetch
+    echo -e "${GREEN}Neofetch config created successfully!${NC}"
+fi
+
 echo -e "${BLUE}Adoption completed!${NC}" 

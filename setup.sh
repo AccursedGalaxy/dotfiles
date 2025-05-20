@@ -20,6 +20,10 @@ echo -e "${GREEN}Setting up simple configurations with stow...${NC}"
 stow -v -t ~ git
 stow -v -t ~ foot
 
+# Setup neofetch with anime images
+echo -e "${GREEN}Setting up Neofetch with anime images...${NC}"
+./neofetch/setup.sh
+
 # Complex configurations with custom approach
 echo -e "${GREEN}Setting up complex configurations with custom approach...${NC}"
 ./adopt_configs.sh
