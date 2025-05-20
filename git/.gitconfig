@@ -1,0 +1,5 @@
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
+[user]
+	email = robinbohrer7@gmail.com
+	name = AccursedGalaxy
