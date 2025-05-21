@@ -1,0 +1,38 @@
+/* Base CSS file for Discord theming */
+/* This contains empty selectors that the theme will fill */
+
+/* All these selectors are needed for the Discord client to update properly */
+.theme-dark,
+.theme-light {
+  /* Define all your theme vars below, only vars defined here work. */
+}
+
+/* Custom elements */
+.container-1-ERn5 {
+}
+
+.layer-2aCbxf {
+}
+
+.markup-eYLPri code {
+}
+
+/* Scrollbars - to be themed */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  margin: 0;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-auto-thumb);
+  min-height: 40px;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-track {
+  background-color: var(--scrollbar-auto-track);
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+} 

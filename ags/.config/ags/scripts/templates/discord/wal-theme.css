@@ -1,0 +1,81 @@
+/**
+ * @name Pywal-Theme
+ * @author Aki
+ * @description Dynamic theme generated from pywal/ags colors
+ * @version 1.0.0
+ */
+
+/* Include base classes - no remote imports for security */
+
+:root {
+    /* Text Colors */
+    --text-normal: {{ $onSurface }};
+    --text-muted: {{ $onSurfaceVariant }};
+    --text-link: {{ $primary }};
+    --channels-default: {{ $onSurfaceVariant }};
+    --interactive-normal: {{ $onSurface }};
+    --interactive-hover: {{ $onPrimary }};
+    --interactive-active: {{ $primary }};
+    --interactive-muted: {{ $onSurfaceVariant }};
+
+    /* Background Colors */
+    --background-primary: {{ $surface }};
+    --background-secondary: {{ $surfaceVariant }};
+    --background-secondary-alt: {{ $surfaceContainerHigh }};
+    --background-tertiary: {{ $surfaceContainer }};
+    --background-accent: {{ $primary }};
+    --background-floating: {{ $surfaceContainerLow }};
+    --background-modifier-hover: rgba(79, 84, 92, 0.16);
+    --background-modifier-active: rgba(79, 84, 92, 0.24);
+    --background-modifier-selected: rgba(79, 84, 92, 0.32);
+    --background-modifier-accent: rgba(79, 84, 92, 0.48);
+
+    /* Brand Colors */
+    --brand-experiment: {{ $primary }};
+    
+    /* Border Colors */
+    --border-strong: {{ $outlineVariant }};
+    --border-weak: {{ $outline }};
+
+    /* Channel Colors */
+    --channeltextarea-background: {{ $surfaceContainerLow }};
+    
+    /* Scrollbar Colors */
+    --scrollbar-thin-thumb: {{ $primaryContainer }};
+    --scrollbar-thin-track: transparent;
+    --scrollbar-auto-thumb: {{ $primaryContainer }};
+    --scrollbar-auto-track: {{ $surfaceContainerLowest }};
+    
+    /* Other UI Elements */
+    --mention-foreground: {{ $onTertiaryContainer }};
+    --mention-background: {{ $tertiaryContainer }};
+    --button-secondary-background: {{ $secondaryContainer }};
+}
+
+/* Custom selectors for additional theming elements */
+.theme-dark, .theme-light {
+    --header-primary: {{ $onSurface }};
+    --header-secondary: {{ $onSurfaceVariant }};
+    --toast-background: {{ $inverseSurface }} !important;
+    --toast-header: {{ $inversePrimary }} !important;
+    --toast-contents: {{ $onInverseSurface }} !important;
+    --toast-border: {{ $outline }} !important;
+}
+
+/* Sidebar and channels list */
+.container-1-ERn5 {
+    background-color: var(--background-tertiary);
+}
+
+/* Remove Discord's built-in background image for popouts */
+.layer-2aCbxf {
+    background-image: none !important;
+}
+
+/* Improve readability for code blocks */
+.markup-eYLPri code {
+    background-color: var(--background-secondary-alt) !important;
+    border: 1px solid var(--border-weak) !important;
+}
+
+/* Add more custom styles here as needed */ 

@@ -1,0 +1,332 @@
+/**
+  * @name Pywal-Theme
+  * @author Aki
+  * @version 1.0.0
+  * @description Dynamic theme generated from pywal/ags colors
+  * @source https://github.com/FilipLitwora/pywal-discord
+*/
+
+/* Apply colors with high specificity to override Discord defaults */
+
+/* Extreme force for body and html backgrounds */
+html, body, .appMount-2yBXZl, div#app-mount, .app-2CXKsg {
+  background-color: {{ $surface }} !important;
+}
+
+/* HIGH SPECIFICITY ROOT VARIABLES */
+:root,
+.theme-dark,
+.theme-light,
+html:not([style*='-6px solid transparent;']):not([style*='6px solid transparent']),
+body:not([style*='-6px solid transparent;']):not([style*='6px solid transparent']),
+div#app-mount,
+.app-2CXKsg,
+.bg-1QIAus,
+.app-2rEoOp, 
+.layers-OrUESM,
+.layer-86YKbF {
+  /* Text Colors */
+  --text-normal: {{ $onSurface }} !important;
+  --text-muted: {{ $onSurfaceVariant }} !important;
+  --text-link: {{ $primary }} !important;
+  --channels-default: {{ $onSurfaceVariant }} !important;
+  --interactive-normal: {{ $onSurface }} !important;
+  --interactive-hover: {{ $onPrimary }} !important;
+  --interactive-active: {{ $primary }} !important;
+  --interactive-muted: {{ $onSurfaceVariant }} !important;
+
+  /* Background Colors */
+  --background-primary: {{ $surface }} !important;
+  --background-secondary: {{ $surfaceVariant }} !important;
+  --background-secondary-alt: {{ $surfaceContainerHigh }} !important;
+  --background-tertiary: {{ $surfaceContainer }} !important;
+  --background-accent: {{ $primary }} !important;
+  --background-floating: {{ $surfaceContainerLow }} !important;
+  --background-mobile-primary: {{ $surface }} !important;
+  --background-mobile-secondary: {{ $surfaceVariant }} !important;
+  
+  /* Modifiers */
+  --background-modifier-hover: rgba(79, 84, 92, 0.16) !important;
+  --background-modifier-active: rgba(79, 84, 92, 0.24) !important;
+  --background-modifier-selected: rgba(79, 84, 92, 0.32) !important;
+  --background-modifier-accent: rgba(79, 84, 92, 0.48) !important;
+  
+  /* Brand */
+  --brand-experiment: {{ $primary }} !important;
+  
+  /* Headers */
+  --header-primary: {{ $onSurface }} !important;
+  --header-secondary: {{ $onSurfaceVariant }} !important;
+  
+  /* Channel/Chat */
+  --channeltextarea-background: {{ $surfaceContainerLow }} !important;
+  --chat-background: {{ $surface }} !important;
+  --chat-border: {{ $surface }} !important;
+  
+  /* Scrollbars */
+  --scrollbar-thin-thumb: {{ $primaryContainer }} !important;
+  --scrollbar-thin-track: transparent !important;
+  --scrollbar-auto-thumb: {{ $primaryContainer }} !important;
+  --scrollbar-auto-track: {{ $surfaceContainerLowest }} !important;
+  
+  /* Borders/Separators */
+  --border-strong: {{ $outlineVariant }} !important;
+  --border-weak: {{ $outline }} !important;
+  
+  /* Mentions */
+  --mention-foreground: {{ $onTertiaryContainer }} !important;
+  --mention-background: {{ $tertiaryContainer }} !important;
+  
+  /* Buttons */
+  --button-secondary-background: {{ $secondaryContainer }} !important;
+}
+
+/* FORCE DARK MODE STYLING */
+.theme-dark,
+body.theme-dark,
+.theme-dark body,
+.theme-dark div,
+html.theme-dark {
+  /* Background colors for dark mode */
+  --background-primary: {{ $surface }} !important;
+  --background-secondary: {{ $surfaceVariant }} !important;
+  --background-secondary-alt: {{ $surfaceContainerHigh }} !important;
+  --background-tertiary: {{ $surfaceContainer }} !important;
+  --background-accent: {{ $primary }} !important;
+  --background-floating: {{ $surfaceContainerLow }} !important;
+  
+  /* Text colors for dark mode */
+  --text-normal: {{ $onSurface }} !important;
+  --header-primary: {{ $onSurface }} !important;
+}
+
+/* Apply colors directly to elements */
+
+/* Main app background and layout containers */
+.app-2rEoOp,
+.appMount-3lHmkl,
+.app-1q1i1E,
+.bg-h5JY_x,
+.container-3Mxszk,
+.layer-3QrUeG,
+.container-2lgZY8,
+.baseLayer-35bLyl {
+  background-color: {{ $surface }} !important;
+}
+
+/* Sidebars - left settings panel */
+.sidebarRegion-VFTUkf,
+.sidebarRegionScroller-3MXcoP,
+.standardSidebarView-3F1I7i,
+.contentRegion-3nDuYy,
+.contentColumnDefault-1VQkGM,
+.accountProfileCard-1XCH88,
+.sidebar-2K8pFh,
+.container-2Pjhx-,
+.flex-1xMQg5 {
+  background-color: {{ $surfaceContainer }} !important;
+}
+
+/* Server list and channels sidebar */
+.container-1-ERn5,
+.sidebar-2K8pFh,
+.scroller-1Bvpku,
+.guilds-1SWlCJ,
+.serverSidebar-2OCe4M,
+.scroller-2LSbBU,
+.panels-j1Uci_,
+.container-3w7J-x,
+.titleContainer-2CXtJo,
+.members-1998pB,
+.membersWrap-2h-GB4 {
+  background-color: {{ $surfaceContainer }} !important;
+}
+
+/* Settings list items and categories */
+.side-8zPYf6 > div {
+  background-color: transparent !important;
+}
+
+/* Content regions - right side of settings */
+.contentRegion-3nDuYy,
+.contentColumnDefault-1VQkGM,
+.accountProfileCard-1XCH88,
+.customColumn-Rb6toI,
+.customScroller-26gWhv {
+  background-color: {{ $surface }} !important;
+}
+
+/* Channels */
+.container-3w7J-x {
+  background-color: {{ $surfaceVariant }} !important;
+}
+
+/* Chat area and main content */
+.chat-3bRxxu,
+.chatContent-a9vAAp,
+.messagesWrapper-1sRNjr,
+.content-1o0f9g,
+.container-1D34oG,
+.threadSidebar-1o3BTy,
+.container-1a3EgQ,
+.message-2qnXI6,
+.content-1x5b-n,
+.mainContent-u_9PKf,
+.scrollableContainer-2NUZem,
+.cozy-3raOZG,
+.contents-2mQqc9,
+.messageContent-2qWWxC,
+.scroller-2LSbBU,
+.form-3gdLxP,
+.scrollableContainer-2NUZem,
+.browser-mnQ1T7,
+.container-3wLKDe,
+.container-PNkimc,
+.withFrame-haYltI,
+.container-6sXIoE,
+.container-3Mxszk,
+.contentRegionScroller-26nc1e,
+.scroller-RmtA4e,
+.homeWrapperNormal-2KSW2_,
+.scrollerBase-289Jih {
+  background-color: {{ $surface }} !important;
+}
+
+/* Force transparent backgrounds on chat elements to show our background */
+.wrapper-2aW0bm,
+.messageListItem-1-jCGe,
+.backgroundColoredContainer-9gXWOx,
+.wrapper-3vR61M,
+.attachment-33OFj0,
+.container-1ov-mD,
+.embedWrapper-lXpS3L,
+.wrapper-35wsBm,
+.reaction-1hd86g,
+.embed-IeVjo6,
+.wrapper-1F5TKx,
+.groupStart-23k01U,
+.contents-2MsGLg,
+div[class^="message-"],
+div[class^="channelTextArea-"] {
+  background-color: transparent !important;
+}
+
+/* Input boxes, search fields and text areas */
+.channelTextArea-rNsIhG,
+.input-cIJ7To,
+.searchBar-3dMhjb,
+.searchBarComponent-32dTOx,
+.container-2XeR5Z,
+.searchBar-6Kv8R2,
+.themedBackground-3msLF6,
+.inputDefault-_djjkz,
+.input-2_SIlA,
+.container-UC8Ug1 {
+  background-color: {{ $surfaceContainerLow }} !important;
+  border-color: {{ $outline }} !important;
+}
+
+/* Settings section backgrounds and cards */
+.codeRedemptionRedirect-1wVR4b,
+.card-3Qj_Yx,
+.card-3RzMcx,
+.codeRedemptionRedirect-2hYMSQ,
+.authedApp-mj2Hmd,
+.connection-1fbD7X,
+.accountList-33MS45,
+.connection-3k9QeF {
+  background-color: {{ $surfaceContainerLow }} !important;
+  border-color: {{ $outline }} !important;
+}
+
+/* Message hover effects */
+.message-2qnXI6:hover,
+.cozyMessage-3V1Y8y:hover {
+  background-color: {{ $surfaceContainerLow }} !important;
+}
+
+/* Server list */
+.wrapper-3NnKdC,
+.guilds-1SWlCJ,
+.listItem-GuPuDH,
+.tree-2wKJdG,
+.scroller-1JbKMe {
+  background-color: {{ $surfaceContainer }} !important;
+}
+
+/* Make scrollbars match theme */
+::-webkit-scrollbar-thumb {
+  background-color: {{ $primaryContainer }} !important;
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+::-webkit-scrollbar-track {
+  background-color: {{ $surfaceContainerLowest }} !important;
+}
+
+/* Headers and text */
+h1, h2, h3, h4, h5, h6 {
+  color: {{ $onSurface }} !important;
+}
+
+/* Buttons with primary and secondary colors */
+.lookFilled-1Gx00P.colorBrand-3pXr91,
+.lookFilled-1Gx00P.colorPrimary-3Wp0oP,
+.button-38aScr.lookFilled-1Gx00P,
+.focused-3afF-j,
+.colorDefault-2K3EoJ.focused-3afF-j {
+  background-color: {{ $primary }} !important;
+  color: {{ $onPrimary }} !important;
+  border-color: {{ $primaryContainer }} !important;
+}
+
+/* Secondary buttons and outlines */
+.lookOutlined-3sRXeN,
+.lookLink-9FtZy-.colorPrimary-3Wp0oP,
+.lookLink-9FtZy-,
+.button-38aScr.lookOutlined-3sRXeN {
+  border-color: {{ $outline }} !important;
+  color: {{ $primary }} !important;
+}
+
+/* Button hover states */
+.lookFilled-1Gx00P:hover,
+.button-38aScr:hover,
+.colorDefault-2K3EoJ:hover {
+  background-color: {{ $primaryContainer }} !important;
+}
+
+/* Modal backgrounds and popups */
+.root-1gCeng,
+.modal-yWgWj-,
+.modalRoot-1Kx4Hb,
+.modalSize-cqUaws,
+.small-3iVZYw,
+.footer-2gL1pp,
+.userPopout-xaxa6l,
+.container-3ayLPN,
+.popout-38lTFE,
+.menu-3sdvDG,
+.tooltip-2QfLtc,
+.submenu-2-ysNh {
+  background-color: {{ $surface }} !important;
+  border-color: {{ $outline }} !important;
+}
+
+/* Discord logo and branding elements */
+.wordmark-2iDDfm svg path,
+.premiumLabel-OTOLI9 > svg > path {
+  fill: {{ $primary }} !important;
+}
+
+/* Active selection and highlight colors */
+.selected-aXhQR6,
+.selected-1Tbx07,
+.modeSelected-346R90,
+.item-PXvHYJ[aria-selected=true],
+.focused-2bY0OD,
+.selected-31soGA {
+  background-color: {{ $primaryContainer }} !important;
+  color: {{ $onPrimaryContainer }} !important;
+} 

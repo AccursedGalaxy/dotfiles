@@ -203,6 +203,12 @@ apply_terminals() {
   "$CONFIG_DIR/scripts/color_generation/update_terminals.sh"
 }
 
+# Apply theme to Discord/Vencord/Vesktop
+apply_discord() {
+  # Run the Discord update script
+  "$CONFIG_DIR/scripts/color_generation/update_discord.sh"
+}
+
 apply_ags() {
   agsv1 run-js "handleStyles(false);"
   agsv1 run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
@@ -229,3 +235,4 @@ apply_qt &
 apply_fuzzel &
 apply_term &
 apply_terminals &
+apply_discord &

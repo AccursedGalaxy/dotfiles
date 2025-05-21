@@ -1,0 +1,160 @@
+/**
+  * @name Pywal-Theme
+  * @author Aki
+  * @version 1.0.0
+  * @description Dynamic theme generated from pywal/ags colors
+  * @source https://github.com/FilipLitwora/pywal-discord
+*/
+
+/* This is a complete, standalone theme file with no external dependencies */
+
+:root {
+  --font-primary: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-display: Whitney, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-code: Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace;
+  --font-korean: Whitney, "Apple SD Gothic Neo", NanumBarunGothic, "\B9D1\C740 \ACE0\B515", "Malgun Gothic", Gulim, 굴림, Dotum, 돋움, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-japanese: Whitney, "Hiragino Sans", "\30D2\30E9\30AE\30CE\89D2\30B4 ProN W3", "Hiragino Kaku Gothic ProN", メイリオ, Meiryo, Osaka, "MS PGothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-chinese-simplified: Whitney, "Microsoft YaHei New", 微软雅黑, "Microsoft Yahei", "Microsoft JhengHei", 宋体, SimSun, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-chinese-traditional: Whitney, "Microsoft JhengHei", 微軟正黑體, "Microsoft JhengHei UI", "Microsoft YaHei", 微軟雅黑, 宋体, SimSun, "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Text Colors */
+  --text-normal: {{ $onSurface }};
+  --text-muted: {{ $onSurfaceVariant }};
+  --text-link: {{ $primary }};
+  --channels-default: {{ $onSurfaceVariant }};
+  --interactive-normal: {{ $onSurface }};
+  --interactive-hover: {{ $onPrimary }};
+  --interactive-active: {{ $primary }};
+  --interactive-muted: {{ $onSurfaceVariant }};
+
+  /* Background Colors */
+  --background-primary: {{ $surface }};
+  --background-secondary: {{ $surfaceVariant }};
+  --background-secondary-alt: {{ $surfaceContainerHigh }};
+  --background-tertiary: {{ $surfaceContainer }};
+  --background-accent: {{ $primary }};
+  --background-floating: {{ $surfaceContainerLow }};
+  --background-mobile-primary: var(--background-primary);
+  --background-mobile-secondary: var(--background-secondary);
+  
+  /* Status Colors */
+  --info-positive-text: #fff;
+  --info-warning-text: #fff;
+  --info-danger-text: #fff;
+  --info-help-background: {{ $tertiary }};
+  --info-help-foreground: {{ $onTertiary }};
+  --info-help-text: #fff;
+  --info-positive-background: {{ $secondary }};
+  --info-positive-foreground: {{ $onSecondary }};
+  --info-warning-background: {{ $errorContainer }};
+  --info-warning-foreground: {{ $onErrorContainer }};
+  --info-danger-background: {{ $error }};
+  --info-danger-foreground: {{ $onError }};
+  --status-warning-text: #000;
+  --info-positive-background: {{ $secondary }};
+  --info-positive-foreground: {{ $onSecondary }};
+  --info-warning-background: {{ $errorContainer }};
+  --info-warning-foreground: {{ $onErrorContainer }};
+  --info-danger-background: {{ $error }};
+  --info-danger-foreground: {{ $onError }};
+  --status-danger-background: {{ $error }};
+  --status-positive-background: {{ $secondary }};
+  --status-warning-background: {{ $errorContainer }};
+  
+  /* Modifiers */
+  --background-modifier-hover: rgba(79, 84, 92, 0.16);
+  --background-modifier-active: rgba(79, 84, 92, 0.24);
+  --background-modifier-selected: rgba(79, 84, 92, 0.32);
+  --background-modifier-accent: rgba(79, 84, 92, 0.48);
+  
+  /* Brand */
+  --brand-experiment: {{ $primary }};
+  
+  /* Headers */
+  --header-primary: {{ $onSurface }};
+  --header-secondary: {{ $onSurfaceVariant }};
+  
+  /* Channel/Chat */
+  --channeltextarea-background: {{ $surfaceContainerLow }};
+  --chat-background: var(--background-primary);
+  --chat-border: var(--background-primary);
+  --chat-input-container-background: var(--background-primary);
+  
+  /* Scrollbars */
+  --scrollbar-thin-thumb: {{ $primaryContainer }};
+  --scrollbar-thin-track: transparent;
+  --scrollbar-auto-thumb: {{ $primaryContainer }};
+  --scrollbar-auto-track: {{ $surfaceContainerLowest }};
+  
+  /* Borders/Separators */
+  --border-strong: {{ $outlineVariant }};
+  --border-weak: {{ $outline }};
+  
+  /* Mentions */
+  --mention-foreground: {{ $onTertiaryContainer }};
+  --mention-background: {{ $tertiaryContainer }};
+  
+  /* Buttons */
+  --button-secondary-background: {{ $secondaryContainer }};
+    
+  /* Toasts */
+  --toast-background: {{ $inverseSurface }};
+  --toast-header: {{ $inversePrimary }};
+  --toast-contents: {{ $onInverseSurface }};
+  --toast-border: {{ $outline }};
+}
+
+/* Add custom styling for specific Discord elements */
+.theme-dark, .theme-light {
+  --background-message-hover: rgba(var(--black), 0.1);
+  --settings-icon-color: #a5abb3;
+  --control-brand-foreground: var(--brand-experiment);
+  --background-accent: var(--brand-experiment);
+  --button-accent-background: var(--brand-experiment);
+  --button-accent-border: var(--brand-experiment);
+}
+
+/* Improve message backgrounds */
+.cozy-3raOZG.wrapper-2a6GCs:not(.groupStart-23k01U) {
+  margin-top: 0px;
+}
+
+.cozy-3raOZG .timestamp-3ZCmNB.alt-1uNpEt {
+  left: -72px;
+}
+
+/* Improve server name readability */
+.name-1jkAdW, .tierTooltipTitle-3AtaZT {
+  text-transform: capitalize;
+}
+
+/* Improve scrollbars */
+::-webkit-scrollbar {
+  width: 8px !important;
+  height: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 4px !important;
+  border: none !important;
+}
+
+/* User profile fixes */
+.userPopout-3XzG_A, .userPopoutInner-1hXSeY, .profileBody-3QbfPe {
+  background-color: var(--background-primary) !important;
+}
+
+.userPopoutOverlayBackground-dKOOda, .overlayBackground-2aa7wt {
+  background-color: var(--background-secondary) !important;
+  margin: 0;
+}
+
+/* Logo color */
+.wordmark-2iDDfm svg {
+  width: 55px;
+  height: 16px;
+}
+
+.wordmark-2iDDfm svg path {
+  fill: var(--brand-experiment);
+} 
