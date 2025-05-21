@@ -71,6 +71,9 @@ elif [ "$backend" = "pywal" ]; then
     wal -c
     wal -i "$1" -n $lightdark -q
     deactivate
+    
+    # Generate Lua colors for Neovim
+    "$XDG_CONFIG_HOME/ags/scripts/color_generation/wal-colors-for-nvim.sh"
     # copy scss
     cp "$XDG_CACHE_HOME/wal/colors.scss" "$CACHE_DIR"/user/generated/material_colors.scss
 

@@ -197,6 +197,12 @@ apply_gtk() {
   fi
 }
 
+# Add tmux and terminal application updates
+apply_terminals() {
+  # Run the terminal update script
+  "$CONFIG_DIR/scripts/color_generation/update_terminals.sh"
+}
+
 apply_ags() {
   agsv1 run-js "handleStyles(false);"
   agsv1 run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
@@ -222,3 +228,4 @@ apply_gtk &
 apply_qt &
 apply_fuzzel &
 apply_term &
+apply_terminals &

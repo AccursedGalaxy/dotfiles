@@ -18,7 +18,7 @@
     "sidebar": {
         "pages": {
             "apis": {
-                "defaultPage": "gpt",
+                "defaultPage": "waifu",
                 "order": [
                     "gpt",
                     "waifu",
