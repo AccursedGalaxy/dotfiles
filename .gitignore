@@ -1,5 +1,5 @@
 tmux/.config/tmux/plugins/
-ags/.config/ags/assets/themes/sourceviewtheme-light.xml
-ags/.config/ags/assets/themes/sourceviewtheme.xml
-hypr/.config/hypr/current_wallpaper.txt
-hypr/.config/hypr/hyprland/colors.conf
+ags/assets/themes/sourceviewtheme-light.xml
+ags/assets/themes/sourceviewtheme.xml
+hypr/current_wallpaper.txt
+hypr/hyprland/colors.conf
