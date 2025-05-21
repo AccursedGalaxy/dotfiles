@@ -209,6 +209,12 @@ apply_discord() {
   "$CONFIG_DIR/scripts/color_generation/update_discord.sh"
 }
 
+# Apply theme to Steam
+apply_steam() {
+  # Run the Steam update script
+  "$CONFIG_DIR/scripts/color_generation/update_steam.sh"
+}
+
 apply_ags() {
   agsv1 run-js "handleStyles(false);"
   agsv1 run-js 'openColorScheme.value = true; Utils.timeout(2000, () => openColorScheme.value = false);'
@@ -236,3 +242,4 @@ apply_fuzzel &
 apply_term &
 apply_terminals &
 apply_discord &
+apply_steam &
