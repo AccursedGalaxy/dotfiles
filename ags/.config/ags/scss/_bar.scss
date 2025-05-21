@@ -17,6 +17,11 @@ $bar_ws_width_focus_active: 2.045rem;
     min-height: 2.727rem;
 }
 
+.bar-floating {
+    border-radius: 1rem;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+}
+
 .bar-bg-focus {
     background-color: $layer0;
     min-height: 1.364rem;
@@ -36,7 +41,7 @@ $bar_ws_width_focus_active: 2.045rem;
 }
 
 .bar-group-margin {
-    padding: 0.273rem 0rem;
+    padding: 0.273rem 0.273rem;
 }
 
 .bar-group {

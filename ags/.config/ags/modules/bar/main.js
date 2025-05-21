@@ -40,7 +40,7 @@ export const Bar = async (monitor = 0) => {
         children: children,
     });
     const normalBarContent = Widget.CenterBox({
-        className: 'bar-bg',
+        className: 'bar-bg bar-floating',
         setup: (self) => {
             const styleContext = self.get_style_context();
             const minHeight = styleContext.get_property('min-height', Gtk.StateFlags.NORMAL);
@@ -61,7 +61,7 @@ export const Bar = async (monitor = 0) => {
         endWidget: Indicators(monitor),
     });
     const focusedBarContent = Widget.CenterBox({
-        className: 'bar-bg-focus',
+        className: 'bar-bg-focus bar-floating',
         startWidget: Widget.Box({}),
         centerWidget: Widget.Box({
             className: 'spacing-h-4',
@@ -83,7 +83,7 @@ export const Bar = async (monitor = 0) => {
         }
     });
     const nothingContent = Widget.Box({
-        className: 'bar-bg-nothing',
+        className: 'bar-bg-nothing bar-floating',
     })
     return Widget.Window({
         monitor,
@@ -91,6 +91,7 @@ export const Bar = async (monitor = 0) => {
         anchor: ['top', 'left', 'right'],
         exclusivity: 'exclusive',
         visible: true,
+        margins: [10, 10, 0, 10], // [top, right, bottom, left]
         child: Widget.Stack({
             homogeneous: false,
             transition: 'slide_up_down',
@@ -113,7 +114,7 @@ export const BarCornerTopleft = (monitor = 0) => Widget.Window({
     layer: 'top',
     anchor: ['top', 'left'],
     exclusivity: 'normal',
-    visible: true,
+    visible: false,
     child: RoundedCorner('topleft', { className: 'corner', }),
     setup: enableClickthrough,
 });
@@ -123,7 +124,7 @@ export const BarCornerTopright = (monitor = 0) => Widget.Window({
     layer: 'top',
     anchor: ['top', 'right'],
     exclusivity: 'normal',
-    visible: true,
+    visible: false,
     child: RoundedCorner('topright', { className: 'corner', }),
     setup: enableClickthrough,
 });
