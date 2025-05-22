@@ -2,9 +2,9 @@
 
 <div align="center">
 
-![GitHub stars](https://img.shields.io/github/stars/aki/dotfiles?style=for-the-badge&color=F4685B)
-![GitHub last commit](https://img.shields.io/github/last-commit/aki/dotfiles?style=for-the-badge&color=C1B9FC)
-![GitHub repo size](https://img.shields.io/github/repo-size/aki/dotfiles?style=for-the-badge&color=65B7EF)
+![Hyprland](https://img.shields.io/badge/Hyprland-Based-blue?style=for-the-badge&logo=linux&logoColor=white&color=65B7EF)
+![Linux](https://img.shields.io/badge/Linux-Rice-green?style=for-the-badge&logo=linux&logoColor=white&color=F4685B)
+![Setup](https://img.shields.io/badge/Setup-Customized-purple?style=for-the-badge&logo=windowsterminal&logoColor=white&color=C1B9FC)
 
 **My personal dotfiles for a customized Hyprland-based desktop environment**
 </div>
