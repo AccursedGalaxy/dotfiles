@@ -10,3 +10,4 @@ hypr/.config/hypr/hyprland/colors.conf
 hypr/.config/hypr/hyprlock.conf
 hypr/.config/hypr/custom/scripts/__restore_video_wallpaper.sh
 tmux/tmux/colors-only.conf
+tmux/tmux/colors.conf
