@@ -1,6 +1,6 @@
-# 🚀 Dotfiles
-
 <div align="center">
+
+# 🚀 Dotfiles
 
 ![Hyprland](https://img.shields.io/badge/Hyprland-Based-blue?style=for-the-badge&logo=linux&logoColor=white&color=65B7EF)
 ![Linux](https://img.shields.io/badge/Linux-Rice-green?style=for-the-badge&logo=linux&logoColor=white&color=F4685B)
