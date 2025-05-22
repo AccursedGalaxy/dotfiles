@@ -18,7 +18,7 @@
     "sidebar": {
         "pages": {
             "apis": {
-                "defaultPage": "booru",
+                "defaultPage": "gpt",
                 "order": [
                     "gpt",
                     "waifu",

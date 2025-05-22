@@ -240,14 +240,42 @@ const CodeBlock = (content = '', lang = 'txt') => {
                         MaterialIcon('content_copy', 'small'),
                         Label({
                             label: 'Copy',
+                            attribute: { 
+                                'originalText': 'Copy',
+                                'updateLabel': function(text) {
+                                    this.label = text;
+                                }
+                            }
                         })
                     ]
                 }),
                 onClicked: (self) => {
                     const buffer = sourceView.get_buffer();
-                    const copyContent = buffer.get_text(buffer.get_start_iter(), buffer.get_end_iter(), false); // TODO: fix this
-                    execAsync([`wl-copy`, `${copyContent}`]).catch(print);
+                    const start = buffer.get_start_iter();
+                    const end = buffer.get_end_iter();
+                    const copyContent = buffer.get_text(start, end, false);
+                    const label = self.child.children[1];
+                    
+                    Utils.execAsync(['bash', '-c', `wl-copy "${copyContent.replace(/"/g, '\\"')}"`])
+                        .then(() => {
+                            // Show feedback that text was copied
+                            self.toggleClassName('copied', true);
+                            label.attribute.updateLabel('Copied!');
+                            
+                            Utils.timeout(1000, () => {
+                                self.toggleClassName('copied', false);
+                                label.attribute.updateLabel(label.attribute.originalText);
+                            });
+                        })
+                        .catch(error => {
+                            console.error('Failed to copy text:', error);
+                            label.attribute.updateLabel('Failed!');
+                            Utils.timeout(1000, () => {
+                                label.attribute.updateLabel(label.attribute.originalText);
+                            });
+                        });
                 },
+                setup: setupCursorHover,
             }),
         ]
     })

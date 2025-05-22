@@ -785,6 +785,11 @@ $skeleton-accent: mix($secondary, $onSecondary, 50%);
     background-color: $surfaceVariant;
 }
 
+.sidebar-chat-codeblock-topbar-btn.copied {
+    background-color: $tertiaryContainer;
+    color: $onTertiaryContainer;
+}
+
 .sidebar-chat-codeblock-code {
     @include techfont;
     padding: 0.682rem;
