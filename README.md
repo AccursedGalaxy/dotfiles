@@ -116,38 +116,6 @@ The AGS configuration is organized in a modular fashion:
 - `services/` - Background services for system monitoring and control
 </details>
 
-## 🛠️ Management
-
-<details>
-<summary><b>Updating</b></summary>
-
-After making changes to your configuration files, they're automatically reflected in your system since they're symlinked.
-
-To update the repository after making changes:
-
-```bash
-./update.sh --all   # Update all configurations
-./update.sh hypr    # Update just the Hypr configuration
-```
-</details>
-
-<details>
-<summary><b>Removing</b></summary>
-
-To remove symlinks created by stow:
-
-```bash
-stow -D -t ~ foot git  # For stow-managed configs
-```
-
-For configurations managed by the adopt script:
-
-```bash
-rm ~/.config/hypr
-mv ~/.config/hypr.bak ~/.config/hypr  # Restore from backup
-```
-</details>
-
 ## 🙏 Credits
 
 This configuration builds upon [end-4/dots-hyprland](https://end-4.github.io/dots-hyprland-wiki/en/), which provided the foundation for this setup. I've made custom modifications to the sidebar, top bar, and expanded the color generation setup to include additional applications.
@@ -156,4 +124,4 @@ This configuration builds upon [end-4/dots-hyprland](https://end-4.github.io/dot
 
 - The adoption script creates backups of your original configurations with `.bak` extension
 - Configuration files are organized to separate base settings from personal customizations
-- Custom settings override the default ones, making it easier to update the base configuration 
+- Custom settings override the default ones, making it easier to update the base configuration
