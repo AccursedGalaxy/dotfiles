@@ -1,8 +1,10 @@
-tmux/.config/tmux/plugins/
+# Ignore tmux plugin manager and all plugins
+tmux/tmux/plugins/
 
+# Ignore dynamic theme files for AGS
 ags/.config/ags/assets/themes/sourceviewtheme*.xml
 
+# Ignore current wallpaper and dynamic color configs in Hyprland
 hypr/.config/hypr/current_wallpaper.txt
 hypr/.config/hypr/hyprland/colors.conf
 hypr/.config/hypr/hyprlock.conf
-
