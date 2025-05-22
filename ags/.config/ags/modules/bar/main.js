@@ -39,56 +39,20 @@ export const Bar = async (monitor = 0) => {
         className: 'bar-sidemodule',
         children: children,
     });
-    const normalBarContent = Widget.CenterBox({
-        className: 'bar-bg bar-floating',
-        setup: (self) => {
-            const styleContext = self.get_style_context();
-            const minHeight = styleContext.get_property('min-height', Gtk.StateFlags.NORMAL);
-            // execAsync(['bash', '-c', `hyprctl keyword monitor ,addreserved,${minHeight},0,0,0`]).catch(print);
-        },
-        startWidget: (await WindowTitle(monitor)),
-        centerWidget: Widget.Box({
-            className: 'spacing-h-4',
-            children: [
-                SideModule([Music()]),
-                Widget.Box({
-                    homogeneous: true,
-                    children: [await NormalOptionalWorkspaces()],
-                }),
-                SideModule([System()]),
-            ]
-        }),
-        endWidget: Indicators(monitor),
-    });
-    const focusedBarContent = Widget.CenterBox({
-        className: 'bar-bg-focus bar-floating',
-        startWidget: Widget.Box({}),
-        centerWidget: Widget.Box({
-            className: 'spacing-h-4',
-            children: [
-                SideModule([]),
-                Widget.Box({
-                    homogeneous: true,
-                    children: [await FocusOptionalWorkspaces()],
-                }),
-                SideModule([]),
-            ]
-        }),
-        endWidget: Widget.Box({}),
-        setup: (self) => {
-            self.hook(Battery, (self) => {
-                if (!Battery.available) return;
-                self.toggleClassName('bar-bg-focus-batterylow', Battery.percent <= userOptions.battery.low);
-            })
-        }
-    });
-    const nothingContent = Widget.Box({
-        className: 'bar-bg-nothing bar-floating',
-    })
-    return Widget.Window({
+    
+    // Prepare content modules
+    const windowTitleContent = await WindowTitle(monitor);
+    const workspacesContent = await NormalOptionalWorkspaces();
+    const focusWorkspacesContent = await FocusOptionalWorkspaces();
+    const musicContent = Music();
+    const systemContent = System();
+    const indicatorsContent = Indicators(monitor);
+    
+    // Create all three separate bar windows with identical structure
+    const leftBar = Widget.Window({
         monitor,
-        name: `bar${monitor}`,
-        anchor: ['top', 'left', 'right'],
+        name: `bar-left-${monitor}`,
+        anchor: ['top', 'left'],
         exclusivity: 'exclusive',
         visible: true,
         margins: [10, 10, 0, 10], // [top, right, bottom, left]
@@ -97,15 +61,118 @@ export const Bar = async (monitor = 0) => {
             transition: 'slide_up_down',
             transitionDuration: userOptions.animations.durationLarge,
             children: {
-                'normal': normalBarContent,
-                'focus': focusedBarContent,
-                'nothing': nothingContent,
+                'normal': Widget.Box({
+                    className: 'bar-bg bar-floating',
+                    children: [windowTitleContent],
+                }),
+                'focus': Widget.Box({
+                    className: 'bar-bg-focus bar-floating',
+                    children: [Widget.Box({})],
+                }),
+                'nothing': Widget.Box({
+                    className: 'bar-bg-nothing bar-floating',
+                }),
             },
             setup: (self) => self.hook(currentShellMode, (self) => {
                 self.shown = currentShellMode.value[monitor];
             })
         }),
     });
+
+    const centerBar = Widget.Window({
+        monitor,
+        name: `bar-center-${monitor}`,
+        anchor: ['top'],
+        exclusivity: 'exclusive',
+        visible: true,
+        margins: [10, 10, 0, 10], // [top, right, bottom, left]
+        child: Widget.Stack({
+            homogeneous: false,
+            transition: 'slide_up_down',
+            transitionDuration: userOptions.animations.durationLarge,
+            children: {
+                'normal': Widget.Box({
+                    className: 'bar-bg bar-floating',
+                    halign: 'center',
+                    children: [
+                        Widget.Box({
+                            className: 'spacing-h-4',
+                            children: [
+                                SideModule([musicContent]),
+                                Widget.Box({
+                                    homogeneous: true,
+                                    children: [workspacesContent],
+                                }),
+                                SideModule([systemContent]),
+                            ]
+                        })
+                    ],
+                }),
+                'focus': Widget.Box({
+                    className: 'bar-bg-focus bar-floating',
+                    halign: 'center',
+                    children: [
+                        Widget.Box({
+                            className: 'spacing-h-4',
+                            children: [
+                                SideModule([]),
+                                Widget.Box({
+                                    homogeneous: true,
+                                    children: [focusWorkspacesContent],
+                                }),
+                                SideModule([]),
+                            ]
+                        })
+                    ],
+                    setup: (self) => {
+                        self.hook(Battery, (self) => {
+                            if (!Battery.available) return;
+                            self.toggleClassName('bar-bg-focus-batterylow', Battery.percent <= userOptions.battery.low);
+                        })
+                    }
+                }),
+                'nothing': Widget.Box({
+                    className: 'bar-bg-nothing bar-floating',
+                }),
+            },
+            setup: (self) => self.hook(currentShellMode, (self) => {
+                self.shown = currentShellMode.value[monitor];
+            })
+        }),
+    });
+
+    const rightBar = Widget.Window({
+        monitor,
+        name: `bar-right-${monitor}`,
+        anchor: ['top', 'right'],
+        exclusivity: 'exclusive',
+        visible: true,
+        margins: [10, 10, 0, 10], // [top, right, bottom, left]
+        child: Widget.Stack({
+            homogeneous: false,
+            transition: 'slide_up_down',
+            transitionDuration: userOptions.animations.durationLarge,
+            children: {
+                'normal': Widget.Box({
+                    className: 'bar-bg bar-floating',
+                    children: [indicatorsContent],
+                }),
+                'focus': Widget.Box({
+                    className: 'bar-bg-focus bar-floating',
+                    children: [Widget.Box({})],
+                }),
+                'nothing': Widget.Box({
+                    className: 'bar-bg-nothing bar-floating',
+                }),
+            },
+            setup: (self) => self.hook(currentShellMode, (self) => {
+                self.shown = currentShellMode.value[monitor];
+            })
+        }),
+    });
+
+    // Return an array of the three bar windows
+    return [leftBar, centerBar, rightBar];
 }
 
 export const BarCornerTopleft = (monitor = 0) => Widget.Window({

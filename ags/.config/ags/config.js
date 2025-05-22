@@ -72,6 +72,25 @@ App.config({
 });
 
 // Stuff that don't need to be toggled. And they're async so ugh...
-forMonitorsAsync(Bar);
+// forMonitorsAsync(Bar);
+// Modified to handle the array of windows returned by Bar for each monitor
+(async () => {
+    const n = Gdk.Display.get_default()?.get_n_monitors() || 1;
+    for (let i = 0; i < n; i++) {
+        try {
+            const barWindows = await Bar(i);
+            if (barWindows && barWindows.length) {
+                // Add windows in specific order to maintain proper layering
+                for (const window of barWindows) {
+                    if (window) {
+                        App.addWindow(window);
+                    }
+                }
+            }
+        } catch (error) {
+            print(`Error creating bar for monitor ${i}: ${error}`);
+        }
+    }
+})().catch(print);
 // Bar().catch(print); // Use this to debug the bar. Single monitor only.
 
