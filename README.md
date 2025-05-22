@@ -77,25 +77,6 @@ foot tmux git zsh
 ```
 </details>
 
-## 📂 Directory Structure
-
-<details>
-<summary><b>Click to expand</b></summary>
-
-- `hypr/` - Hyprland window manager configuration
-  - `.config/hypr/hyprland/` - Default configurations
-  - `.config/hypr/custom/` - Personalized configurations and overrides
-- `ags/` - AGS (Aylur's GTK Shell) configuration
-  - `.config/ags/modules/` - UI components (bar, sidebar, widgets)
-  - `.config/ags/services/` - Background services
-- `wal/` - Pywal configuration and templates
-- `tmux/` - Tmux configuration
-- `foot/` - Foot terminal configuration
-- `git/` - Git configuration
-- `zsh/` - Zsh shell configuration
-- `neofetch/` - System information display configuration
-</details>
-
 ## ⚙️ Customization
 
 <details>
