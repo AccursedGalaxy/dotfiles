@@ -29,7 +29,7 @@ This configuration builds upon the excellent [end-4/dots-hyprland](https://end-4
   <img src="assets/arch_rice_sidebar.png" alt="Sidebar View" width="100%">
 </div>
 <div align="center">
-  <img src="assets/arch-rise-base.png" alt="Sidebar View" width="100%">
+  <img src="assets/arch-rice-base.png" alt="Base Desktop View" width="100%">
 </div>
 </details>
 
