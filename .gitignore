@@ -4,10 +4,9 @@ tmux/tmux/plugins/
 # Ignore dynamic theme files for AGS
 ags/.config/ags/assets/themes/sourceviewtheme*.xml
 
-# Ignore current wallpaper and dynamic color configs in Hyprland
+# Ignore dynamic color configs and wallpaper-related files
 hypr/.config/hypr/current_wallpaper.txt
 hypr/.config/hypr/hyprland/colors.conf
 hypr/.config/hypr/hyprlock.conf
-
 hypr/.config/hypr/custom/scripts/__restore_video_wallpaper.sh
 tmux/tmux/colors-only.conf
