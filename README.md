@@ -2,7 +2,8 @@
 
 My personal dotfiles repository for a customized Hyprland-based desktop environment. This configuration builds upon the excellent [end-4/dots-hyprland](https://end-4.github.io/dots-hyprland-wiki/en/) foundation with custom modifications to the sidebar, top bar, and color generation setup.
 
-![Screenshot of Desktop Environment](https://via.placeholder.com/800x450) <!-- Replace with actual screenshot -->
+![Screenshot of Desktop Environment](assets/arch-rice-main.png)
+
 
 ## Components
 
