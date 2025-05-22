@@ -1,55 +1,109 @@
 # Dotfiles
 
-Personal dotfiles managed with GNU Stow and custom scripts.
+My personal dotfiles repository for a customized Hyprland-based desktop environment. This configuration builds upon the excellent [end-4/dots-hyprland](https://end-4.github.io/dots-hyprland-wiki/en/) foundation with custom modifications to the sidebar, top bar, and color generation setup.
 
-## Structure
+![Screenshot of Desktop Environment](https://via.placeholder.com/800x450) <!-- Replace with actual screenshot -->
 
-Each directory corresponds to a specific configuration:
+## Components
 
-- `hypr/` - Hyprland configuration (window manager)
+This setup includes configurations for:
+
+- **Hyprland** - Tiling Wayland compositor/window manager
+- **AGS** (Aylur's GTK Shell) - JavaScript-based desktop environment with custom widgets
+- **Pywal** - Color scheme generator based on wallpapers
+- **Foot** - Fast, lightweight terminal emulator
+- **Tmux** - Terminal multiplexer
+- **Neofetch** - System information tool
+- **Git** - Version control configuration
+- **Zsh** - Shell configuration
+
+## Features
+
+My customized setup includes:
+
+- **Auto-generated colorschemes** - Wallpaper-based theming with extended application support
+- **OpenRouter-powered AI Assistant** - Custom sidebar with OpenRouter integration supporting multiple AI models
+- **Redesigned top bar** - Custom appearance with similar functionality to the original
+- **Enhanced sidebar** - Streamlined interface with focused functionality
+- **Consistent theming** - Unified appearance across applications
+
+## Installation Note
+
+This repository is my personal configuration and is not designed for direct installation on other systems. If you're interested in a similar setup:
+
+1. Install the original [end-4/dots-hyprland](https://end-4.github.io/dots-hyprland-wiki/en/) using their installation script
+2. Once you have a working setup, you can adapt specific elements from this repository to customize your configuration
+
+## Dependencies
+
+This setup requires the following packages:
+
+```bash
+# Core components
+hyprland hyprpaper hypridle hyprlock
+
+# Desktop environment
+aylurs-gtk-shell
+
+# Appearance and colors
+pywal imagemagick
+
+# Utilities
+foot tmux git zsh
+```
+
+## Directory Structure
+
+- `hypr/` - Hyprland window manager configuration
+  - `.config/hypr/hyprland/` - Default configurations
+  - `.config/hypr/custom/` - Personalized configurations and overrides
 - `ags/` - AGS (Aylur's GTK Shell) configuration
-- `tmux/` - Tmux configuration 
+  - `.config/ags/modules/` - UI components (bar, sidebar, widgets)
+  - `.config/ags/services/` - Background services
+- `wal/` - Pywal configuration and templates
+- `tmux/` - Tmux configuration
 - `foot/` - Foot terminal configuration
 - `git/` - Git configuration
+- `zsh/` - Zsh shell configuration
+- `neofetch/` - System information display configuration
 
-## Setup
+## Customization
 
-There are two ways to set up the configurations:
+### Hyprland
 
-### 1. Using Stow
+Custom settings for Hyprland are maintained in the `hypr/.config/hypr/custom/` directory to make it easier to update the base configuration. Key files:
 
-For simple configurations like foot and git:
+- `general.conf` - General Hyprland settings
+- `keybinds.conf` - Custom keyboard shortcuts
+- `rules.conf` - Window rules for specific applications
+- `execs.conf` - Startup applications and services
 
-```bash
-# For all configurations (simple ones will work, complex ones may need the script)
-stow -t ~ hypr ags tmux foot git
+### AGS
 
-# For individual configurations
-stow -t ~ foot
-stow -t ~ git
-```
+The AGS configuration is organized in a modular fashion:
 
-### 2. Using the Adoption Script
+- `user_options.jsonc` - User-specific preferences
+- `modules/` - UI components organized by function
+- `services/` - Background services for system monitoring and control
 
-For more complex configurations like Hypr and AGS, use the provided script:
+## Credits
 
-```bash
-# Makes backups of your existing configs and sets up symlinks
-./adopt_configs.sh
-```
+This configuration builds upon [end-4/dots-hyprland](https://end-4.github.io/dots-hyprland-wiki/en/), which provided the foundation for this setup. I've made custom modifications to the sidebar, top bar, and expanded the color generation setup to include additional applications.
 
-## Update and Management
+## Management
 
-After making changes to your configuration files, you don't need to do anything special - the changes are automatically reflected since they're symlinked.
+### Updating
 
-If you want to update the repository after making changes to your config files directly, you may run:
+After making changes to your configuration files, they're automatically reflected in your system since they're symlinked.
+
+To update the repository after making changes:
 
 ```bash
 ./update.sh --all   # Update all configurations
 ./update.sh hypr    # Update just the Hypr configuration
 ```
 
-## Removing
+### Removing
 
 To remove symlinks created by stow:
 
@@ -57,14 +111,15 @@ To remove symlinks created by stow:
 stow -D -t ~ foot git  # For stow-managed configs
 ```
 
-For configurations managed by the adopt script, simply remove the symlinks and restore from backup:
+For configurations managed by the adopt script:
 
 ```bash
 rm ~/.config/hypr
-mv ~/.config/hypr.bak ~/.config/hypr
+mv ~/.config/hypr.bak ~/.config/hypr  # Restore from backup
 ```
 
 ## Notes
 
 - The adoption script creates backups of your original configurations with `.bak` extension
-- This setup handles both simple and complex dotfile configurations 
+- Configuration files are organized to separate base settings from personal customizations
+- Custom settings override the default ones, making it easier to update the base configuration 
