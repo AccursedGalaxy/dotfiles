@@ -58,17 +58,17 @@ EOF
 update_hyprlock_wallpaper() {
 	local imgpath=$1
 	local thumbnail=$2
-	
+
 	# If thumbnail is provided (for videos), use it. Otherwise use the original image
 	local wallpath=${thumbnail:-$imgpath}
-	
+
 	# Store a copy of the current wallpaper path for other processes
 	mkdir -p "$(dirname "$XDG_CONFIG_HOME/hypr/current_wallpaper.txt")"
 	echo "$wallpath" > "$XDG_CONFIG_HOME/hypr/current_wallpaper.txt"
-	
+
 	# Update the path directly in hyprlock.conf
 	sed -i "s|path = .*$|path = $wallpath|" "$HYPRLOCK_CONF"
-	
+
 	# Debug: output the new wallpaper path
 	echo "Updated hyprlock wallpaper path to: $wallpath"
 }
