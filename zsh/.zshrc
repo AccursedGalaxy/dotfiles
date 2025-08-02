@@ -103,6 +103,12 @@ export PATH="$HOME/bin:/usr/local/bin:$PATH"
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
+#-------------
+# Desktop Apps
+#-------------
+export BROWSER="zen"
+
+
 #  (
 #  )\ )    )               )               )
 # (()/( ( /(       (    ( /(        (   ( /(

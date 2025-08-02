@@ -33,7 +33,7 @@
         "keepVisible": true
     },
     "ai": {
-        "defaultGPTProvider": "openrouter_claude_thinking"
+        "defaultGPTProvider": "openrouter_claude_sonnet"
     },
     "appearance": {
         "cursor": {
