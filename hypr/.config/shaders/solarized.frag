@@ -1,0 +1,1 @@
+../../../Projects/dotfiles/hypr/.config/hypr/shaders/solarized.frag

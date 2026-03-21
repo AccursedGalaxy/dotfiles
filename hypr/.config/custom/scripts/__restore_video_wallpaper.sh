@@ -1,0 +1,1 @@
+../../../../Projects/dotfiles/hypr/.config/hypr/custom/scripts/__restore_video_wallpaper.sh
