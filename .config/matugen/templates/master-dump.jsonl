@@ -1,0 +1,11 @@
+<* for name, color in colors *>
+{"scope": "semantic", "name": "{{ name }}", "variant": "default", "hex": "{{ color.default.hex }}", "hex_stripped": "{{ color.default.hex_stripped }}", "rgb": "{{ color.default.rgb }}", "rgba": "{{ color.default.rgba }}", "hsl": "{{ color.default.hsl }}", "hsla": "{{ color.default.hsla }}", "r": {{ color.default.red }}, "g": {{ color.default.green }}, "b": {{ color.default.blue }}, "h": {{ color.default.hue }}, "s": {{ color.default.saturation }}, "l": {{ color.default.lightness }}}
+{"scope": "semantic", "name": "{{ name }}", "variant": "light", "hex": "{{ color.light.hex }}", "hex_stripped": "{{ color.light.hex_stripped }}", "rgb": "{{ color.light.rgb }}", "rgba": "{{ color.light.rgba }}", "hsl": "{{ color.light.hsl }}", "hsla": "{{ color.light.hsla }}", "r": {{ color.light.red }}, "g": {{ color.light.green }}, "b": {{ color.light.blue }}, "h": {{ color.light.hue }}, "s": {{ color.light.saturation }}, "l": {{ color.light.lightness }}}
+{"scope": "semantic", "name": "{{ name }}", "variant": "dark", "hex": "{{ color.dark.hex }}", "hex_stripped": "{{ color.dark.hex_stripped }}", "rgb": "{{ color.dark.rgb }}", "rgba": "{{ color.dark.rgba }}", "hsl": "{{ color.dark.hsl }}", "hsla": "{{ color.dark.hsla }}", "r": {{ color.dark.red }}, "g": {{ color.dark.green }}, "b": {{ color.dark.blue }}, "h": {{ color.dark.hue }}, "s": {{ color.dark.saturation }}, "l": {{ color.dark.lightness }}}
+<* endfor *>
+
+<* for palette_name, palette_tones in palettes *>
+<* for tone, value in palette_tones *>
+{"scope": "palette", "name": "{{ palette_name }}", "tone": "{{ tone }}", "hex": "{{ value.hex }}", "hex_stripped": "{{ value.hex_stripped }}", "rgb": "{{ value.rgb }}", "rgba": "{{ value.rgba }}", "hsl": "{{ value.hsl }}", "hsla": "{{ value.hsla }}", "r": {{ value.red }}, "g": {{ value.green }}, "b": {{ value.blue }}, "h": {{ value.hue }}, "s": {{ value.saturation }}, "l": {{ value.lightness }}}
+<* endfor *>
+<* endfor *>

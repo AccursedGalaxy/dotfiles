@@ -1,0 +1,97 @@
+/* # Custom Beeper.app style
+This file will be injected as a <style> tag
+After making your changes, type "Reload custom CSS" in the command bar
+To open dev tools, open the command bar and type "open console" */
+
+:root {
+  --beeper-rosewater: {{colors.surface_bright.default.hex}};
+  --beeper-peach: {{colors.on_primary_container.default.hex}};
+  --beeper-green: {{colors.on_tertiary_container.default.hex}};
+  --beeper-blue: {{colors.tertiary_container.default.hex}};
+  --beeper-rosewater: {{colors.surface_bright.default.hex}};
+  --beeper-lavender: {{colors.secondary.default.hex}};
+  --beeper-text: {{colors.on_surface.default.hex}};
+  --beeper-subtext0: {{colors.on_background.default.hex}}
+  --beeper-subtext1: {{colors.on_surface_variant.default.hex}}
+  --beeper-surface2: {{colors.outline.default.hex}};
+  --beeper-surface1: {{colors.primary.default.hex}};
+  --beeper-surface0: {{colors.surface_container_high.default.hex}};
+  --beeper-base: {{colors.surface.default.hex}};
+  --beeper-mantle: {{colors.surface_container_low.default.hex}};
+  --beeper-crust: {{colors.inverse_surface.default.hex}};
+
+  --beeper-bg-main: var(--beeper-base);
+  --beeper-bg-secondary: var(--beeper-mantle);
+  --beeper-accent-1: var(--beeper-blue);
+  --beeper-accent-2: var(--beeper-rosewater);
+
+  /* Splash and Chat BG*/
+  --color-surface: var(--beeper-bg-secondary);
+  /* Sidebar and Border */
+  --color-background-sidebar-opaque: var(--beeper-bg-main);
+  /* A lot of elements + brand color */
+  --color-primary: var(--beeper-accent-1);
+  --color-brand: var(--beeper-accent-2);
+  /* One of the panels? */
+  --color-secondary-container: var(--beeper-bg-main);
+  /* Right Preferences Pane */
+  --color-background-grouped-weak: var(--beeper-bg-secondary);
+  --color-background-grouped: var(--beeper-bg-main);
+  --color-border-neutrals-weak: var(--beeper-bg-secondary);
+
+  /* Text */
+  --color-text-neutrals: var(--beeper-text);
+  --color-text-translucent: var(--beeper-text);
+  --color-on-surface-rgb: var(--beeper-text);
+  --color-on-surface: var(--beeper-text);
+
+  /* Compose Bubble */
+  --color-tertiary-container: var(--beeper-bg-main);
+  --color-on-tertiary-container: var(--beeper-text);
+  --color-outline: var(--beeper-accent-1);
+
+  /* Primarily Help Modal */
+  --background-primary: var(--beeper-bg-main) !important;
+  --background-secondary: var(--beeper-bg-secondary) !important;
+  --content-primary: var(--beeper-text);
+  --content-secondary: var(--beeper-subtext-0);
+}
+
+/* Account Switcher */
+.account-switcher {
+  background-color: var(--beeper-bg-main) !important;
+}
+
+/* Right Pane Header*/
+.right-pane-header {
+  box-shadow: 0 1px 0 var(--beeper-bg-secondary) !important;
+}
+
+/* Settings Items */
+div.brand-combined-icon {
+  color: var(--beeper-accent-1) !important;
+}
+
+/* Command Popup */
+.command-bar {
+  background: var(--beeper-bg-secondary)
+}
+
+/* Hotkeys (and presumably other modals) */
+.modal {
+  background: var(--beeper-bg-main);
+}
+
+/* Accounts Dropdown */
+.menu-list {
+  background: var(--beeper-bg-main);
+}
+
+/* Help Modal */
+#helphub-modal {
+  background: var(--beeper-bg-main);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {}
+}

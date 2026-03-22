@@ -1,0 +1,36 @@
+{
+    "label": "lock",
+    "action": "$HOME/user_scripts/hyprlock/lock.sh",
+    "text": "Lock",
+    "keybind": "l"
+}
+{
+    "label": "logout",
+    "action": "$HOME/user_scripts/wlogout/dusky_session.sh logout",
+    "text": "Logout",
+    "keybind": "e"
+}
+{
+    "label": "suspend",
+    "action": "systemctl suspend",
+    "text": "Suspend",
+    "keybind": "u"
+}
+{
+    "label": "shutdown",
+    "action": "$HOME/user_scripts/wlogout/dusky_session.sh poweroff",
+    "text": "Shutdown",
+    "keybind": "s"
+}
+{
+    "label": "soft-reboot",
+    "action": "$HOME/user_scripts/wlogout/dusky_session.sh soft-reboot",
+    "text": "Soft-Reboot",
+    "keybind": "q"
+}
+{
+    "label": "reboot",
+    "action": "$HOME/user_scripts/wlogout/dusky_session.sh reboot",
+    "text": "Reboot",
+    "keybind": "r"
+}
